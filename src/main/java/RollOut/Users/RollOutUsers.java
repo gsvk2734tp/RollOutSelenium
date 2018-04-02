@@ -107,17 +107,12 @@ public abstract class RollOutUsers extends RollOutWeb {
     }
 
     public void deleteAllUsers() {
-        try {
             //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='a']")));
             driver.findElement(By.cssSelector(CHECKBOX_SELECTALL_USERS)).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
             driver.findElement(By.cssSelector(BUTTOM_DELETE_ALL_USERS)).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
             driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
-            Thread.sleep(1000);
-        } catch (Exception e) {
-            System.out.println("Ошибка очистки списка");
-        }
     }
 
     public void editUserPositive(String name, String email, String phone, String about) throws InterruptedException {

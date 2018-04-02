@@ -54,6 +54,4 @@ public abstract class RollOutWeb {
         wait.until(titleIs(TITLE_APP));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
     }
-
-
 }
