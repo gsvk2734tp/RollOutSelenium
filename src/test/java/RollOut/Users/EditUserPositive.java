@@ -1,15 +1,10 @@
 package RollOut.Users;
 
 import RollOut.RandomStr;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-
-import static RollOut.RollOutConstants.*;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.
@@ -29,6 +24,7 @@ public class EditUserPositive extends RollOutUsers {
         int number = 15;
         Thread.sleep(3000);
         createUsers(number);
+
         editUserPositive("1", null, null, null); // 1 0 0 0
         editUserPositive(null, "1@gmail.com", null, null); // 0 1 0 0
         editUserPositive(null, null, "+721", null); // 0 0 1 0
@@ -46,5 +42,7 @@ public class EditUserPositive extends RollOutUsers {
         editUserPositive("a", "alice@d", null, "qwe"); // 1 1 0 1
         editUserPositive(null, "z@1", "+721", "qwe"); // 0 1 1 1
         editUserPositive("qwe4", "z@1", "+721", "qwe"); // 1 1 1 1
+
+        deleteAllUsers();
     }
 }

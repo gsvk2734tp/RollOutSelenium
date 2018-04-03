@@ -34,7 +34,7 @@ public abstract class RollOutWeb {
     @Parameterized.Parameters
     public static List<Object> data() {
         options.setBinary(operaPath);
-        Object[] data = new Object[]{new ChromeDriver()}; // new OperaDriver(options) , new EdgeDriver() , new FirefoxDriver(),
+        Object[] data = new Object[]{new EdgeDriver()};
         return Arrays.asList(data);
     }
 

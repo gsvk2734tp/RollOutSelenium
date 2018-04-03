@@ -1,17 +1,12 @@
 package RollOut.Users;
 
 import RollOut.RandomStr;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
-
-import static RollOut.RollOutConstants.*;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 02.04.2018.
@@ -28,10 +23,10 @@ public class CreateUserNegative extends RollOutUsers {
 
     @Test
     public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
+        Thread.sleep(3000); //Пропуск анимации
         //Проверка имени негативные сценарии
-        Thread.sleep(1000); //Пропуск анимации
-        createUserNegative("", "", ""); // все поля пустые
-        createUserNegative("", "gmail@gmail.com", ""); // пустое user
+        //TODO Изменили логику, нужно переделать проверку createUserNegative("", "", ""); //Все поля пустые
+        //TODO createUserNegative("", "gmail@gmail.com", ""); // пустое user
         /* Проверка на спецсимволы в имени, запрещены, пока что баг
         for (char sumb : specSumbUserName) {
             createUser(specSumb, "gmail@gmail.com", "");

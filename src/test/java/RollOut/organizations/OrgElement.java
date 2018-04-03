@@ -1,9 +1,6 @@
 package RollOut.organizations;
 
-import RollOut.Users.RollOutUsers;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -13,7 +10,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import static RollOut.RollOutConstants.*;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.

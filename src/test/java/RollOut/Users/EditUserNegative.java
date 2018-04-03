@@ -1,15 +1,10 @@
 package RollOut.Users;
 
 import RollOut.RandomStr;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-
-import static RollOut.RollOutConstants.*;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.
@@ -65,5 +60,7 @@ public class EditUserNegative extends RollOutUsers {
 
         /** Проверка Описания негативные - еще не реализовали валидацию  */
         // createUser("User" + count, "gmail@gmail.com", "+71234", RandomStrings.getStr(129)); // 129 симв
+
+        deleteAllUsers();
     }
 }

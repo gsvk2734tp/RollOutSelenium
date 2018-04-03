@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 
 import static RollOut.RollOutConstants.*;
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.
@@ -26,14 +27,23 @@ public abstract class RollOutUsers extends RollOutWeb {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws InterruptedException {
         logonSilsoDefault();
+        selectFirstOrganization();
     }
 
     @After
     public void tearDown() {
         driver.quit();
         driver = null;
+    }
+
+    public void selectFirstOrganization() throws InterruptedException {
+        driver.get(URL_WINDOWS_USERS);
+        wait.until(titleIs(TITLE_APP));
+        Thread.sleep(1000);
+        driver.findElement(By.cssSelector("div.header-menu_icon-link")).click();
+        driver.findElement(By.className("dropdown-menu_item")).click();
     }
 
     public void createUsers(int number) throws InterruptedException {
@@ -119,13 +129,14 @@ public abstract class RollOutUsers extends RollOutWeb {
         Assert.assertTrue(driver.findElement(By.cssSelector(FIELD_ERROR_USER)).isEnabled());
     }
 
-    public void deleteAllUsers() {
-            //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='a']")));
-            driver.findElement(By.cssSelector(CHECKBOX_SELECTALL_USERS)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
-            driver.findElement(By.cssSelector(BUTTOM_DELETE_ALL_USERS)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
-            driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
+    public void deleteAllUsers() throws InterruptedException {
+        //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='a']")));
+        driver.findElement(By.cssSelector(CHECKBOX_SELECTALL_USERS)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
+        driver.findElement(By.cssSelector(BUTTOM_DELETE_ALL_USERS)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
+        driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
+        Thread.sleep(1000);
     }
 
     public void editUserPositive(String name, String email, String phone, String about) throws InterruptedException {

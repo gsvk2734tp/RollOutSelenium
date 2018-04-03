@@ -1,8 +1,6 @@
 package RollOut.Users;
 
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -10,8 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static RollOut.RollOutConstants.*;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+import static RollOut.RollOutConstants.BUTTON_DELETE_USER;
+import static RollOut.RollOutConstants.BUTTON_DELETE_YES_USER;
 
 /**
  * @author Golyshkin.Dmitriy on 27.03.2018.
