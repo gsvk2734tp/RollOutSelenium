@@ -19,23 +19,20 @@ task wrapper(type: Wrapper) {
     gradleVersion = "1.12"
 }
 
-
 test {
-
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: $descriptor.className")
+    }
 }
-/* sourceSets {
-    test {
-        java {
-            srcDirs = ["test/task1"]
-        }
-    }
-    test {
-        java {
-            srcDirs = ["test/task2"]
-        }
+sourceSets {
+    //main.java.srcDir 'src/main'
+    test.java.srcDir 'src/test'
+}
 
-    }
-} */
+task auth(type: JavaExec, dependsOn: classes) {
+    main 'RollOut.auth'
+    classpath sourceSets.test.runtimeClasspath
+}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
