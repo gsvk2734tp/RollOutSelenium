@@ -24,13 +24,6 @@ public class UserElement extends RollOutUsers {
         super(driver);
     }
 
-    @Before
-    public void setUp() throws InterruptedException {
-        authSilso(URL_NSMS_SITE_TEST);
-        wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS_TEST);
-    }
-
     @Test
     public void editUser() throws InterruptedException {
         Thread.sleep(1000); //Пропуск анимации
@@ -53,10 +46,6 @@ public class UserElement extends RollOutUsers {
         driver.findElement(By.xpath("//span[text()='Описание:']"));
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-        driver = null;
-    }
+
 
 }

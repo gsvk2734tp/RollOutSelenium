@@ -12,8 +12,11 @@ public class RollOutConstants {
     public static final String URL_NSMS_USERS_TEST = "http://rollout-test.nsms.site/users";
     public static final String URL_UBUNTU_SITE = "10.0.15.39:8090";
     public static final String URL_UBUNTU_USERS = "10.0.15.39:8090/users";
-    public static final String LOGIN = "alice";
-    public static final String PASSWORD = "P@ssw0rd";
+    public static final String URL_WINDOWS_SITE = "http://10.0.15.237:8090";
+    public static final String URL_WINDOWS_USERS = "http://10.0.15.237:8090/users";
+    public static final String URL_WINDOWS_AUTH = "https://10.0.15.237:8811";
+    public static final String LOGIN = "admin";
+    public static final String PASSWORD = "123123123";
     public static final String SPEC_SYMBOLS = "!#$%&'*+-/=?^_`{|";
 
     public static final String TITLE_APP = "Rollout.WebApplication";

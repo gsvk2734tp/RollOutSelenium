@@ -24,14 +24,6 @@ public class EditUserPositive extends RollOutUsers {
         super(driver);
     }
 
-    @Before
-    public void setUp() throws InterruptedException {
-        //authSilso(URL_NSMS_SITE_TEST);
-        driver.get(URL_NSMS_SITE);
-        wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS);
-    }
-
     @Test
     public void editUsers() throws InterruptedException {
         int number = 15;
@@ -54,12 +46,5 @@ public class EditUserPositive extends RollOutUsers {
         editUserPositive("a", "alice@d", null, "qwe"); // 1 1 0 1
         editUserPositive(null, "z@1", "+721", "qwe"); // 0 1 1 1
         editUserPositive("qwe4", "z@1", "+721", "qwe"); // 1 1 1 1
-    }
-
-    @After
-    public void tearDown() {
-        deleteAllUsers();
-        driver.quit();
-        driver = null;
     }
 }

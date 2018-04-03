@@ -1,8 +1,5 @@
 package RollOut.auth;
 
-import RollOut.Users.RollOutUsers;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -10,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static RollOut.RollOutConstants.TITLE_SILSO;
-import static RollOut.RollOutConstants.URL_NSMS_SITE_TEST;
+import static RollOut.RollOutConstants.URL_WINDOWS_AUTH;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
@@ -20,18 +17,14 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 @RunWith(value = Parameterized.class)
-public class AuthElement extends RollOutUsers {
+public class AuthElement extends RollOutAuth {
     public AuthElement(WebDriver driver) {
         super(driver);
     }
 
-    @Before
-    public void setUp() {
-    }
-
     @Test
-    public void auth() throws InterruptedException {
-        driver.get(URL_NSMS_SITE_TEST);
+    public void CheckElements() throws InterruptedException {
+        driver.get(URL_WINDOWS_AUTH);
         wait.until(titleIs(TITLE_SILSO));
         driver.findElement(By.className("logo"));
         driver.findElement(By.xpath("//span[text()='ViPNet']"));
@@ -40,11 +33,5 @@ public class AuthElement extends RollOutUsers {
         driver.findElement(By.className("language-dropdown-toggle-text"));
         driver.findElement(By.xpath("//label[text()='Имя учетной записи:']"));
         driver.findElement(By.xpath("//label[text()='Пароль:']"));
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-        driver = null;
     }
 }

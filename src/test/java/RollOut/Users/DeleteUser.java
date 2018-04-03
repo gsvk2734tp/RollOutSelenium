@@ -26,13 +26,6 @@ public class DeleteUser extends RollOutUsers {
         super(driver);
     }
 
-    @Before
-    public void setUp() throws InterruptedException {
-        authSilso(URL_NSMS_SITE_TEST);
-        wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS_TEST);
-    }
-
     @Test
     public void deleteUsersAndCheckVisible() throws InterruptedException {
         int number = 3;
@@ -49,12 +42,5 @@ public class DeleteUser extends RollOutUsers {
             //Проверяем, что пользователь удален
             Assert.assertTrue(driver.findElements(By.xpath("//td[text()='User" + i + "']")).isEmpty());
         }
-    }
-
-    @After
-    public void tearDown() {
-        //Выгрузка браузера
-        driver.quit();
-        driver = null;
     }
 }

@@ -33,7 +33,7 @@ public class CreateMoreUsers extends RollOutUsers {
     }
 
     @Before
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
 
@@ -78,11 +78,4 @@ public class CreateMoreUsers extends RollOutUsers {
             driver.findElement(By.cssSelector("button:nth-child(1)")).click();
         }
     }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-        driver = null;
-    }
-
 }

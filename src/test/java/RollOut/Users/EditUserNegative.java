@@ -8,61 +8,51 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 
-import java.io.IOException;
-
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
- * @author Golyshkin.Dmitriy on 02.04.2018.
- * Класс, содержащий методы для тестирования пользователей
+ * @author Golyshkin.Dmitriy on 28.03.2018.
+ * Автотест, проверяющий негативные сценарии редактирования свойств пользователя.
  * TfsTestCase xxx-xxx
  */
 
 @RunWith(value = Parameterized.class)
-public class CreateUserNegative extends RollOutUsers {
+public class EditUserNegative extends RollOutUsers {
 
-    public CreateUserNegative(WebDriver driver) {
+    public EditUserNegative(WebDriver driver) {
         super(driver);
     }
 
-    @Before
-    public void setUp() {
-        authSilso(URL_NSMS_SITE_TEST);
-        wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS_TEST);
-
-    }
-
     @Test
-    public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
-        //Проверка имени негативные сценарии
-        Thread.sleep(1000); //Пропуск анимации
-        createUserNegative("", "", ""); // все поля пустые
-        createUserNegative("", "gmail@gmail.com", ""); // пустое user
+    public void editUsers() throws InterruptedException {
+        Thread.sleep(3000);
+        createUsers(2);
+
+        //Проверка имени негативные
+        editUserNegative("", "", "", ""); // все поля пустые
+        editUserNegative("", null, null, null); // пустое user
         /* Проверка на спецсимволы в имени, запрещены, пока что баг
         for (char sumb : specSumbUserName) {
-            createUser(specSumb, "gmail@gmail.com", "");
+            editUserNegative(specSumb, null, null, null);
         } */
-        createUserNegative(RandomStr.getStr(129), "gmail@gmail.com", ""); //имя 129
-        createUserNegative(RandomStr.getStr(257), "gmail@gmail.com", ""); //имя 257
+        editUserNegative(RandomStr.getStr(129), null, null, null); // имя 129
+        editUserNegative(RandomStr.getStr(257), null, null, null); // имя 257
 
         //Проверка email негативные
-        createUserNegative("User", "@" + "gmail.com", ""); // локальная 0 симв
-        //createUser("User", RandomStr.getStr(64) + "@" + "gmail.com", ""); // локальная 64 симв, баг
+        editUserNegative(null, "@gmail.com", null, null); // локальная часть 0
+        //editUserNegative(null, RandomStr.getStr(64) + "@gmail.com" , null, null); // локальная часть 64, баг
         /* Проверка на спецсимволы в локальной части, запрещены вначале в локальной части, пока что баг
         for (char sumb : specSumb) {
-            createUser("User", sumb + "@" + RandomStr.getStr(3), "");
+            editUserNegative(null, sumb + "@gmail.com", null, null);
         } */
-        createUserNegative("User", "alice" + "@", ""); // доменная 0 симв
-        createUserNegative("User", "alice" + "@" + RandomStr.getStr(64), ""); // доменная более 63 без точки
-        createUserNegative("User", "1" + "@" + RandomStr.getStrDomain(253), ""); // более 252 симв
-
+        editUserNegative(null, "qwe@", null, null); // доменная 0
+        editUserNegative(null, "qwe@" + RandomStr.getStr(64), null, null); // доменная более 63 без точки
+        editUserNegative(null, "qwe@" + RandomStr.getStrDomain(253), null, null); // более 254 символов
         // Проверка на спецсимволы, запрещены в доменной части
         for (char sumb : specSumb) {
-            if (sumb != '-' && sumb != '.') createUserNegative("User", "User" + "@" + "gmail" + sumb + "com", "");
+            if (sumb != '-' && sumb != '.') editUserNegative(null, "alice@" + "gmail" + sumb + "com", null, null);
         }
-
 
         /**Проверка phone негативные - еще не реализовали валидацию */
        /* createUser("User" + count, "gmail@gmail.com", "+7"); //менее 2х симв
@@ -75,12 +65,5 @@ public class CreateUserNegative extends RollOutUsers {
 
         /** Проверка Описания негативные - еще не реализовали валидацию  */
         // createUser("User" + count, "gmail@gmail.com", "+71234", RandomStrings.getStr(129)); // 129 симв
-    }
-
-    @After
-    public void tearDown() {
-        //Выгрузка браузера
-        driver.quit();
-        driver = null;
     }
 }

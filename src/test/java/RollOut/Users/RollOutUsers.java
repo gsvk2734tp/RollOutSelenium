@@ -1,7 +1,9 @@
 package RollOut.Users;
 
 import RollOut.RollOutWeb;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +23,17 @@ public abstract class RollOutUsers extends RollOutWeb {
 
     public RollOutUsers(WebDriver driver) {
         super(driver);
+    }
+
+    @Before
+    public void setUp() {
+        logonSilsoDefault();
+    }
+
+    @After
+    public void tearDown() {
+        driver.quit();
+        driver = null;
     }
 
     public void createUsers(int number) throws InterruptedException {

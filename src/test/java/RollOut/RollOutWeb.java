@@ -34,7 +34,7 @@ public abstract class RollOutWeb {
     @Parameterized.Parameters
     public static List<Object> data() {
         options.setBinary(operaPath);
-        Object[] data = new Object[]{new OperaDriver(options), new FirefoxDriver(), new ChromeDriver(), new EdgeDriver()};
+        Object[] data = new Object[]{new ChromeDriver()}; // new OperaDriver(options) , new EdgeDriver() , new FirefoxDriver(),
         return Arrays.asList(data);
     }
 
@@ -44,9 +44,8 @@ public abstract class RollOutWeb {
         driver.manage().window().maximize();
     }
 
-    public void authSilso(String site) {
-        driver.get(site);
-        //Редирект на страницу аутентификации
+    public void logonSilsoDefault() {
+        driver.get(URL_WINDOWS_SITE);
         wait.until(titleIs(TITLE_SILSO));
         driver.findElement(By.id("UserName")).sendKeys(LOGIN);
         driver.findElement(By.id("Password")).sendKeys(PASSWORD);

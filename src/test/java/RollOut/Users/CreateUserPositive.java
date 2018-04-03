@@ -31,13 +31,6 @@ public class CreateUserPositive extends RollOutUsers {
         super(driver);
     }
 
-    @Before
-    public void setUp() {
-        authSilso(URL_NSMS_SITE_TEST);
-        wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS_TEST);
-    }
-
     @Test
     public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка, что поля в карточке пользователя пустые по умолчанию
@@ -76,13 +69,7 @@ public class CreateUserPositive extends RollOutUsers {
         createUser("User" + count, "z@1", "+7", "."); // 1 симв
         createUser("User" + count, "z@1", "+7", SPEC_SYMBOLS); // спецсимволы
         createUser("User" + count, "z@1", "+7", RandomStr.getStr(128)); // 128 симв
-    }
-
-    @After
-    public void tearDown() {
         deleteAllUsers();
-        driver.quit();
-        driver = null;
     }
 }
 

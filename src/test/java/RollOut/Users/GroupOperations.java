@@ -24,14 +24,6 @@ public class GroupOperations extends RollOutUsers {
         super(driver);
     }
 
-    @Before
-    public void setUp() throws InterruptedException {
-        driver.get(URL_NSMS_SITE);
-        wait.until(titleIs(TITLE_APP));
-        driver.get(URL_NSMS_USERS);
-        createUsers(20);
-    }
-
     @Test
     public void checkGroupOperations() throws InterruptedException {
         //Массовое удаление
@@ -42,12 +34,5 @@ public class GroupOperations extends RollOutUsers {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
         driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
         Thread.sleep(1000);
-    }
-
-    @After
-    public void tearDown() {
-        //Выгрузка браузера
-        driver.quit();
-        driver = null;
     }
 }
