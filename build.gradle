@@ -26,13 +26,24 @@ test {
 }
 sourceSets {
     //main.java.srcDir 'src/main'
-    test.java.srcDir 'src/test'
+    //test.java.srcDir 'src/test'
+}
+task sampleTest (type: Test, dependsOn: testClasses) {
+        include '**/*OrgElement*'
 }
 
-task auth(type: JavaExec, dependsOn: classes) {
-    main 'RollOut.auth'
-    classpath sourceSets.test.runtimeClasspath
+/*
+task sampleTest (type: Test) {
+    filter { includeTestsMatching 'OrgElement' }
+} */
+
+/* task auth(type: JavaExec, dependsOn: classes) {
+    main 'RollOut.auth.RollOutWeb' //запуск мейн класса, у меня его нет
+    //classpath sourceSets.test.runtimeClasspath
+    classpath sourceSets.test.classesDir
+    classpath configurations.runtime
 }
+*/
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
