@@ -6,6 +6,7 @@ package RollOut;
  */
 
 public class RollOutConstants {
+    public static final String SPEC_SYMBOLS = "!#$%&'*+-/=?^_`{|";
     public static final String URL_NSMS_SITE = "http://rollout.nsms.site/organizations";
     public static final String URL_NSMS_USERS = "http://rollout.nsms.site/users";
     public static final String URL_NSMS_SITE_TEST = "http://rollout-test.nsms.site";
@@ -15,12 +16,13 @@ public class RollOutConstants {
     public static final String URL_WINDOWS_SITE = "http://10.0.15.237:8090";
     public static final String URL_WINDOWS_USERS = "http://10.0.15.237:8090/users";
     public static final String URL_WINDOWS_AUTH = "https://10.0.15.237:8811";
+    public static final String URL_IDENTITY_NSMS = "https://identity.nsms.site/account/login";
     public static final String LOGIN = "admin";
     public static final String PASSWORD = "123123123";
-    public static final String SPEC_SYMBOLS = "!#$%&'*+-/=?^_`{|";
+    public static final String SELECT_LANGUAGE_AUTH = ".language-dropdown-toggle-text";
 
     public static final String TITLE_APP = "Rollout.WebApplication";
-    public static final String TITLE_SILSO = "Silso";
+    public static final String TITLE_SILSO = "ViPNet Network Security Management System";
     public static final String BUTTON_LOGIN = "button.btn-login";
     public static final String BUTTON_ADD_USER = "a.toolbar_button";
     public static final String BUTTON_SAVE_USER = "button:nth-child(1)";

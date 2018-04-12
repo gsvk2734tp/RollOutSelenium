@@ -34,7 +34,11 @@ public abstract class RollOutWeb {
     @Parameterized.Parameters
     public static List<Object> data() {
         options.setBinary(operaPath);
-        Object[] data = new Object[]{new ChromeDriver(), new FirefoxDriver(), new OperaDriver(options), new EdgeDriver()};
+        Object[] data = new Object[]{new ChromeDriver()
+         //       , new FirefoxDriver()
+         //       , new OperaDriver(options)
+         //       , new EdgeDriver()
+        };
         return Arrays.asList(data);
     }
 
@@ -47,8 +51,8 @@ public abstract class RollOutWeb {
     public void logonSilsoDefault() {
         driver.get(URL_WINDOWS_SITE);
         wait.until(titleIs(TITLE_SILSO));
-        driver.findElement(By.id("UserName")).sendKeys(LOGIN);
-        driver.findElement(By.id("Password")).sendKeys(PASSWORD);
+        driver.findElement(By.id("UserName")).sendKeys("alice");
+        driver.findElement(By.id("Password")).sendKeys("P@ssw0rd");
         driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
         wait.until(titleIs(TITLE_APP));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
