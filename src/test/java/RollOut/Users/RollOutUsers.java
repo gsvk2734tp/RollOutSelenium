@@ -16,8 +16,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.
- * Автотест, проверяющий видимость элементов на странице с Организациями
- * TfsTestCase xxx-xxx
+ * Класс, для работы со страниец Пользователи
  */
 
 public abstract class RollOutUsers extends RollOutWeb {
@@ -134,8 +133,8 @@ public abstract class RollOutUsers extends RollOutWeb {
         driver.findElement(By.cssSelector(CHECKBOX_SELECTALL_USERS)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Удалить пользователей']")));
         driver.findElement(By.cssSelector(BUTTOM_DELETE_ALL_USERS)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
-        driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_PRESS_YES_USER_AND_ORG)));
+        driver.findElement(By.cssSelector(BUTTON_DELETE_PRESS_YES_USER_AND_ORG)).click();
         Thread.sleep(1000);
     }
 

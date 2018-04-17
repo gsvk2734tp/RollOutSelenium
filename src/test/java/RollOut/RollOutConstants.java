@@ -27,12 +27,19 @@ public class RollOutConstants {
     public static final String BUTTON_ADD_USER = "a.toolbar_button";
     public static final String BUTTON_SAVE_USER = "button:nth-child(1)";
     public static final String BUTTON_DELETE_USER = ".icon.icon-web-general.icons-general-delete";
-    public static final String BUTTON_DELETE_YES_USER = "button.actions_button:nth-child(1)";
+    public static final String BUTTON_DELETE_PRESS_YES_USER_AND_ORG = "button.actions_button:nth-child(1)";
     public static final String BUTTOM_DELETE_ALL_USERS = "a.toolbar_button:nth-child(1)";
-
-    public static final String BUTTON_EDIT_ORG = "tr:nth-child(2) i.table_edit-row-icon";
-    public static final String BUTTON_CANCEL_ORG = "button:nth-child(2)";
-    public static final String BUTTON_DELETE_ORG = "tr:nth-child(2) i.table_delete-row-icon";
     public static final String CHECKBOX_SELECTALL_USERS = "th.user-list_first-column.table_header";
     public static final String FIELD_ERROR_USER = ".form_field-error";
+
+
+    public static final String BUTTON_EDIT_ORG = "tr.active i.table_delete-row-icon";
+    public static final String BUTTON_DELETE_ORG = "tr.active i.table_delete-row-icon";
+    public static final String BUTTON_CANCEL_ORG = "button:nth-child(2)";
+    public static final String BUTTON_ADD_ORG = "a.toolbar_button";
+    public static final String BUTTON_SAVE_ORG = "button.actions_button";
+    public static final String FIELD_URI_ORG = "input.content_field-text-input";
+    public static final String FIELD_NAME_ORG = ".ng-input.ng-star-inserted input";
+    public static final String FIELD_ERROR_ORG = ".error.ng-star-inserted";
+
 }

@@ -14,12 +14,16 @@ import java.util.List;
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
+/**
+ * @author Golyshkin.Dmitriy on 17.04.2018.
+ * Класс для множественного добавления пользователей
+ * TfsTestCase xxx-xxx
+ */
 
 public class CreateMoreUsers {
     WebDriver driver;
     WebDriverWait wait;
     int count = 0;
-
 
     @Test
     public void create500Users() throws InterruptedException {
@@ -35,7 +39,7 @@ public class CreateMoreUsers {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
         driver.get(URL_NSMS_USERS);
         Thread.sleep(5000);
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 20; i++) {
             driver.findElement(By.cssSelector(BUTTON_ADD_USER)).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));
             Thread.sleep(2000);
@@ -48,7 +52,6 @@ public class CreateMoreUsers {
             count++;
             Thread.sleep(1000);
         }
-
     }
 
     @After

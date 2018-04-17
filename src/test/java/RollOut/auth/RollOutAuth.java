@@ -9,6 +9,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+/**
+ * @author Golyshkin.Dmitriy on 28.03.2018.
+ * Класс, для работы со страниец Авторизации
+ */
 
 public class RollOutAuth extends RollOutWeb {
     public RollOutAuth(WebDriver driver) {
@@ -24,15 +28,4 @@ public class RollOutAuth extends RollOutWeb {
         driver.quit();
         driver = null;
     }
-
-    public void logonSilsoDefault() {
-        driver.get(URL_WINDOWS_SITE);
-        wait.until(titleIs(TITLE_SILSO));
-        driver.findElement(By.id("UserName")).sendKeys(LOGIN);
-        driver.findElement(By.id("Password")).sendKeys(PASSWORD);
-        driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
-        wait.until(titleIs(TITLE_APP));
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
-    }
-
 }

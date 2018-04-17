@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static RollOut.RollOutConstants.BUTTON_DELETE_USER;
-import static RollOut.RollOutConstants.BUTTON_DELETE_YES_USER;
+import static RollOut.RollOutConstants.BUTTON_DELETE_PRESS_YES_USER_AND_ORG;
 
 /**
  * @author Golyshkin.Dmitriy on 27.03.2018.
@@ -34,8 +34,8 @@ public class DeleteUser extends RollOutUsers {
             driver.findElement(By.xpath("//td[text()='User" + i + "']")).click();
             wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_USER)));
             driver.findElement(By.cssSelector(BUTTON_DELETE_USER)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_YES_USER)));
-            driver.findElement(By.cssSelector(BUTTON_DELETE_YES_USER)).click();
+            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_PRESS_YES_USER_AND_ORG)));
+            driver.findElement(By.cssSelector(BUTTON_DELETE_PRESS_YES_USER_AND_ORG)).click();
             Thread.sleep(2000);
             //Проверяем, что пользователь удален
             Assert.assertTrue(driver.findElements(By.xpath("//td[text()='User" + i + "']")).isEmpty());

@@ -22,7 +22,6 @@ import static RollOut.RollOutConstants.*;
 
 @RunWith(value = Parameterized.class)
 public class OrgElement extends RollOutOrganizations {
-    public Actions actions;
 
     public OrgElement(WebDriver driver) {
         super(driver);
@@ -36,13 +35,13 @@ public class OrgElement extends RollOutOrganizations {
         driver.findElement(By.xpath("//a[text()='Добавить организацию']"));
         driver.findElement(By.xpath("//th[text()='Название']"));
         driver.findElement(By.xpath("//th[text()='URI префикс']"));
-        driver.findElement(By.xpath("//td[text()='Иногенты']"));
-        WebElement element = driver.findElement(By.xpath("//td[text()='Ромашка']"));
+        driver.findElement(By.xpath("//td[text()='Ромашка']"));
 
         //Проверка невидимого элемента Редактировать у первой в списке Орг
         Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).isEnabled());
+
         //Проверка элементов в карточке Организации
-        actions.moveToElement(driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)));
+        driver.findElement(By.xpath("//td[text()='Ромашка']")).click();
         driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).click();
         driver.findElement(By.xpath("//div[contains(text(),'Данные организации в Rollout Center')]"));
         driver.findElement(By.xpath("//div[contains(text(),'Название:')]"));

@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class RandomStr {
     static String AlfEng = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    static String AlfRus = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+    static String AlfRus = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
     static String AlfRusEng = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
     static char[] sumb = AlfEng.toCharArray();
 
@@ -25,6 +25,13 @@ public class RandomStr {
         String line = "";
         for (int i = 0; i < leng; i++) {
             line += (sumb[(int) (Math.random() * AlfEng.length())]);
+        }
+        return line;
+    }
+    public static String getRusStr(int leng) {
+        String line = "";
+        for (int i = 0; i < leng; i++) {
+            line += (sumb[(int) (Math.random() * AlfRus.length())]);
         }
         return line;
     }
