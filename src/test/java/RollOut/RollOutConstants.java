@@ -33,7 +33,7 @@ public class RollOutConstants {
     public static final String FIELD_ERROR_USER = ".form_field-error";
 
 
-    public static final String BUTTON_EDIT_ORG = "tr.active i.table_delete-row-icon";
+    public static final String BUTTON_EDIT_ORG = "tr.active i.table_edit-row-icon";
     public static final String BUTTON_DELETE_ORG = "tr.active i.table_delete-row-icon";
     public static final String BUTTON_CANCEL_ORG = "button:nth-child(2)";
     public static final String BUTTON_ADD_ORG = "a.toolbar_button";

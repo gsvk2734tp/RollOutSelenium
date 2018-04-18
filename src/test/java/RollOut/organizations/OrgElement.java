@@ -38,10 +38,10 @@ public class OrgElement extends RollOutOrganizations {
         driver.findElement(By.xpath("//td[text()='Ромашка']"));
 
         //Проверка невидимого элемента Редактировать у первой в списке Орг
+        driver.findElement(By.xpath("//td[text()='Ромашка']")).click(); // Делает данную организацию активной, все проверки далее идут с ней
         Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).isEnabled());
 
         //Проверка элементов в карточке Организации
-        driver.findElement(By.xpath("//td[text()='Ромашка']")).click();
         driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).click();
         driver.findElement(By.xpath("//div[contains(text(),'Данные организации в Rollout Center')]"));
         driver.findElement(By.xpath("//div[contains(text(),'Название:')]"));

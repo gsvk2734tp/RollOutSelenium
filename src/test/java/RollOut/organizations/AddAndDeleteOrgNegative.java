@@ -26,7 +26,7 @@ public class AddAndDeleteOrgNegative extends RollOutOrganizations{
     public void addAndDeleteOrg() throws InterruptedException {
         //Проверка на ввод более 64 символов
         orgUrl = RandomStr.getStr(128);
-        addOrg("Быки и коровы", orgUrl);
+        addOrgPositive("Быки и коровы", orgUrl);
         Assert.assertTrue(driver.findElement(By.xpath("//td[text()='" + orgUrl.substring(0,64) + "']")).isEnabled());
         deleteOrg("Быки и коровы");
 
@@ -46,7 +46,5 @@ public class AddAndDeleteOrgNegative extends RollOutOrganizations{
         }
          addOrgNegative("Быки и коровы","www com");
          */
-
-        //TODO проверка уникальности, после интеграции с NSMS
     }
 }

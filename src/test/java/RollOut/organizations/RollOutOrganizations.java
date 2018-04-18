@@ -16,6 +16,8 @@ import static RollOut.RollOutConstants.*;
  * @author Golyshkin.Dmitriy on 17.04.2018.
  * Класс, для работы со страниец Организации
  */
+//TODO проверка уникальности, после интеграции с NSMS
+//TODO после интеграции с NSMS добавить проверку на смену имени Организации
 
 public class RollOutOrganizations extends RollOutWeb {
     public Actions actions;
@@ -35,7 +37,7 @@ public class RollOutOrganizations extends RollOutWeb {
         driver = null;
     }
 
-    public void addOrg(String nameOrg, String uri) throws InterruptedException {
+    public void addOrgPositive(String nameOrg, String uri) throws InterruptedException {
         driver.findElement(By.cssSelector(BUTTON_ADD_ORG)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(FIELD_URI_ORG)));
         // Assert.assertEquals(driver.findElement(By.cssSelector(FIELD_NAME_ORG)).getCssValue("text"), "Выберите или введите название новой Организации"); Баг
@@ -73,8 +75,26 @@ public class RollOutOrganizations extends RollOutWeb {
         driver.findElement(By.xpath("//td[text()='" + nameOrg + "']")).click();
         driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).click();
         Thread.sleep(1000);
-        Assert.assertEquals(driver.findElement(By.cssSelector(FIELD_NAME_ORG)).getCssValue("text"), nameOrg);
+        Assert.assertEquals(driver.findElement(By.cssSelector(".ng-value-label")).getText(), nameOrg);
         driver.findElement(By.cssSelector(FIELD_URI_ORG)).clear();
         driver.findElement(By.cssSelector(FIELD_URI_ORG)).sendKeys(uri);
+        driver.findElement(By.cssSelector(BUTTON_SAVE_ORG)).click();
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//td[text()='" + nameOrg + "']"))));
+    }
+
+    public void editOrgNegative(String nameOrg, String uri) throws InterruptedException {
+        driver.findElement(By.xpath("//td[text()='" + nameOrg + "']")).click();
+        driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).click();
+        Thread.sleep(1000);
+        Assert.assertEquals(driver.findElement(By.cssSelector(".ng-value-label")).getText(), nameOrg);
+        driver.findElement(By.cssSelector(FIELD_URI_ORG)).clear();
+        driver.findElement(By.cssSelector(FIELD_URI_ORG)).sendKeys(uri);
+        //Проверка, что кнопка сохранить не доступна и появилось сообщение об ошибке
+        Thread.sleep(500);
+        Assert.assertFalse(driver.findElement(By.cssSelector(BUTTON_SAVE_ORG)).isEnabled());
+        Assert.assertTrue(driver.findElement(By.cssSelector(FIELD_ERROR_ORG)).isEnabled());
+        driver.findElement(By.cssSelector(BUTTON_CANCEL_ORG)).click();
+        Assert.assertTrue(driver.findElements(By.xpath("//td[text()='" + nameOrg + "']")).isEmpty());
     }
 }

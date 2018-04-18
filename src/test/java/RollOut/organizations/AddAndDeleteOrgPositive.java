@@ -23,11 +23,11 @@ public class AddAndDeleteOrgPositive extends RollOutOrganizations {
 
     @Test
     public void addAndDeleteOrg() throws InterruptedException {
-        addOrg("Быки и коровы", RandomStr.getStr(1));
+        addOrgPositive("Быки и коровы", RandomStr.getStr(1));
         deleteOrg("Быки и коровы");
-        addOrg("Быки и коровы", RandomStr.getStr(35));
+        addOrgPositive("Быки и коровы", RandomStr.getStr(35));
         deleteOrg("Быки и коровы");
-        addOrg("Быки и коровы", RandomStr.getStr(64));
+        addOrgPositive("Быки и коровы", RandomStr.getStr(64));
         deleteOrg("Быки и коровы");
     }
 }

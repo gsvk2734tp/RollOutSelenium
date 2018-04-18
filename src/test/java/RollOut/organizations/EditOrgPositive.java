@@ -1,7 +1,6 @@
 package RollOut.organizations;
 
-//TODO Тест не сделан, блокирующий баг
-
+import RollOut.RandomStr;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -23,10 +22,11 @@ public class EditOrgPositive extends RollOutOrganizations {
     }
 
     @Test
-    public void editOrgPositive() {
-
+    public void editOrgPositive() throws InterruptedException {
+        addOrgPositive("Быки и коровы", RandomStr.getStr(30));
+        editOrgPostive("Быки и коровы", RandomStr.getStr(1));
+        editOrgPostive("Быки и коровы", RandomStr.getStr(19));
+        editOrgPostive("Быки и коровы", RandomStr.getStr(64));
+        deleteOrg("Быки и коровы");
     }
-
-
-
 }
