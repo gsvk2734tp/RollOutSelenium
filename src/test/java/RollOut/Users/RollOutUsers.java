@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
@@ -18,6 +20,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * @author Golyshkin.Dmitriy on 28.03.2018.
  * Класс, для работы со страниец Пользователи
  */
+//TODO добавить в тесты проверку на наличие пользователей, перед созданием
 
 public abstract class RollOutUsers extends RollOutWeb {
 
@@ -35,6 +38,17 @@ public abstract class RollOutUsers extends RollOutWeb {
     public void tearDown() {
         driver.quit();
         driver = null;
+    }
+
+    public static boolean checkNumberRegExp(String line){
+        Pattern p;
+        if (line.charAt(0) == '+') {
+            p = Pattern.compile("^[+0-9][0-9]{2,16}$");
+        } else {
+            p = Pattern.compile("^[+0-9][0-9]{2,15}$");
+        }
+        Matcher m = p.matcher(line);
+        return m.matches();
     }
 
     public void selectFirstOrganization() throws InterruptedException {
@@ -105,6 +119,14 @@ public abstract class RollOutUsers extends RollOutWeb {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));
         Thread.sleep(1000);
         List<WebElement> elements = driver.findElements(By.cssSelector("div.host_input input"));
+        if (email == null) {
+            elements.get(0).sendKeys(userName);
+            elements.get(2).sendKeys(mobile);
+            Assert.assertTrue(checkNumberRegExp(elements.get(2).getAttribute("value")));
+            Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
+            Assert.assertTrue(driver.findElements(By.cssSelector(FIELD_ERROR_USER)).isEmpty());
+            return;
+        }
         elements.get(0).sendKeys(userName);
         elements.get(1).sendKeys(email);
         elements.get(2).sendKeys(mobile);
@@ -113,7 +135,7 @@ public abstract class RollOutUsers extends RollOutWeb {
         Assert.assertTrue(driver.findElement(By.cssSelector(FIELD_ERROR_USER)).isEnabled());
     }
 
-    public void createUserNegative(String userName, String email, String mobile, String about) throws InterruptedException {
+    public void createUserNegativeChechAboutField(String userName, String email, String mobile, String about) throws InterruptedException {
         //Открытие карточки для создания пользователя
         driver.findElement(By.cssSelector(BUTTON_ADD_USER)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));
@@ -124,8 +146,10 @@ public abstract class RollOutUsers extends RollOutWeb {
         elements.get(2).sendKeys(mobile);
         driver.findElement(By.cssSelector("textarea")).sendKeys(about); //Описание
         //Проверка, что кнопка Сохранить не доступна. Присутствует сообщение об ошибке
-        Assert.assertFalse(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
-        Assert.assertTrue(driver.findElement(By.cssSelector(FIELD_ERROR_USER)).isEnabled());
+        Assert.assertEquals(driver.findElement(By.cssSelector("textarea")).getAttribute("value"),(about.substring(0,128)));
+        Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
+        Assert.assertTrue(driver.findElements(By.cssSelector(FIELD_ERROR_USER)).isEmpty());
+        //TODO Зайти в описание и проверить, что появилось описание
     }
 
     public void deleteAllUsers() throws InterruptedException {
@@ -160,11 +184,11 @@ public abstract class RollOutUsers extends RollOutWeb {
         }
         driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).click();
         Thread.sleep(1000);
-        if (name != null) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + name + "']")));
+        if (name != null) wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + name.trim() + "']")));
         if (email != null)
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + email + "']")));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + email.trim() + "']")));
         if (phone != null)
-            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + phone + "']")));
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='" + phone.trim() + "']")));
         count--;
     }
 
@@ -184,10 +208,22 @@ public abstract class RollOutUsers extends RollOutWeb {
         if (phone != null) {
             elements.get(2).clear();
             elements.get(2).sendKeys(phone);
+                if (phone.length() > 3) {
+                    Assert.assertTrue(checkNumberRegExp(elements.get(2).getAttribute("value")));
+                    Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
+                    Assert.assertTrue(driver.findElements(By.cssSelector(FIELD_ERROR_USER)).isEmpty());
+                    count++;
+                    return;
+            }
         }
         if (about != null) {
             driver.findElement(By.cssSelector("textarea")).clear();
             driver.findElement(By.cssSelector("textarea")).sendKeys(about);
+            Assert.assertEquals(driver.findElement(By.cssSelector("textarea")).getAttribute("value"),(about.substring(0,128)));
+            Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());
+            Assert.assertTrue(driver.findElements(By.cssSelector(FIELD_ERROR_USER)).isEmpty());
+                count++;
+                return;
         }
         Thread.sleep(500);
         Assert.assertFalse(driver.findElement(By.cssSelector(BUTTON_SAVE_USER)).isEnabled());

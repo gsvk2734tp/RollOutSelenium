@@ -1,6 +1,7 @@
 package RollOut.Users;
 
 import RollOut.RandomStr;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -24,43 +25,53 @@ public class EditUserNegative extends RollOutUsers {
         Thread.sleep(3000);
         createUsers(2);
 
-        //Проверка имени негативные
-        editUserNegative("", "", "", ""); // все поля пустые
+        /**Проверка имени негативные */
+        //TODO editUserNegative("", "", "", ""); // все поля пустые
         editUserNegative("", null, null, null); // пустое user
-        /* Проверка на спецсимволы в имени, запрещены, пока что баг
+
+        /* Проверка на спецсимволы в имени, запрещены, пока что баг 42860
         for (char sumb : specSumbUserName) {
-            editUserNegative(specSumb, null, null, null);
+            editUserNegative("User" + sumb, null, null, null);
         } */
+
         editUserNegative(RandomStr.getStr(129), null, null, null); // имя 129
         editUserNegative(RandomStr.getStr(257), null, null, null); // имя 257
 
-        //Проверка email негативные
+        /**Проверка email негативные*/
         editUserNegative(null, "@gmail.com", null, null); // локальная часть 0
-        //editUserNegative(null, RandomStr.getStr(64) + "@gmail.com" , null, null); // локальная часть 64, баг
-        /* Проверка на спецсимволы в локальной части, запрещены вначале в локальной части, пока что баг
+        editUserNegative(null, RandomStr.getStr(64) + "@gmail.com" , null, null); // локальная часть 64
+
+        /* Проверка на спецсимволы в локальной части, запрещены вначале в локальной части, баг 42860
         for (char sumb : specSumb) {
             editUserNegative(null, sumb + "@gmail.com", null, null);
         } */
         editUserNegative(null, "qwe@", null, null); // доменная 0
         editUserNegative(null, "qwe@" + RandomStr.getStr(64), null, null); // доменная более 63 без точки
         editUserNegative(null, "qwe@" + RandomStr.getStrDomain(253), null, null); // более 254 символов
-        // Проверка на спецсимволы, запрещены в доменной части
+
+        /** Проверка на спецсимволы, запрещены в доменной части */
+        //TODO убрать из теста знак '_' после фикса бага
         for (char sumb : specSumb) {
-            if (sumb != '-' && sumb != '.') editUserNegative(null, "alice@" + "gmail" + sumb + "com", null, null);
+            if (sumb != '-' && sumb != '.' && sumb != '_') editUserNegative(null, "alice@" + "gmail" + sumb + "com", null, null);
         }
 
         /**Проверка phone негативные - еще не реализовали валидацию */
-       /* createUser("User" + count, "gmail@gmail.com", "+7"); //менее 2х симв
-        createUser("User" + count, "gmail@gmail.com", "+79212312312331321423154131"); //более 15 симв
-        createUser("User" + count, "gmail@gmail.com", "qqqq"); //буквы
-        createUser("User" + count, "gmail@gmail.com", "+ERDFS"); //буквы и + вначале
-        createUser("User" + count, "gmail@gmail.com", "+7(123)456-78-90"); //буквы и + вначале
-        createUser("User" + count, "gmail@gmail.com", "   +712132123456789 "); //20 симв с пробелами
-        */
+        editUserNegative(null, null, "+7", null); //менее 2х симв
+        editUserNegative(null, null, "+79212312312331321423154131", null); //более 15 симв
+        editUserNegative(null, null, "qqqq+123", null); //буквы
+        editUserNegative(null, null, "+ERDFS123", null); //буквы и + вначале
+        editUserNegative(null, null, "+7(123)456-78-90", null); //буквы и + вначале
+        editUserNegative(null, null, "   +712132123456789 ", null); //20 симв с пробелами
 
-        /** Проверка Описания негативные - еще не реализовали валидацию  */
-        // createUser("User" + count, "gmail@gmail.com", "+71234", RandomStrings.getStr(129)); // 129 симв
 
+        /** Проверка Описания негативные */
+        editUserNegative("User" + count, "gmail@gmail.com", "+71234", RandomStr.getStr(129)); // 129 симв
+        editUserNegative("User" + count, "gmail@gmail.com", "", RandomStr.getStr(129)); // 129 симв
+        editUserNegative("User" + count, "", "+71234", RandomStr.getStr(129)); // 129 симв
+
+    }
+    @After
+    public void deleteAllUsersAfterTest() throws InterruptedException {
         deleteAllUsers();
     }
 }

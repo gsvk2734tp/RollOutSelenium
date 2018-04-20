@@ -14,6 +14,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * Автотест, проверяющий наличие элементов на вкладке с авторизацией
  * TfsTestCase xxx-xxx
  */
+//TODO Оптимизировать переключение языка, сделать метод вместо driver.get(URL_WINDOWS_AUTH + "/Home/ChangeLanguage?culture=en-US&returnUrl=%2FAuthenticationInfo");
 
 @RunWith(value = Parameterized.class)
 public class AuthElement extends RollOutAuth {
@@ -23,7 +24,7 @@ public class AuthElement extends RollOutAuth {
 
     @Test
     public void CheckElements() throws InterruptedException {
-        driver.get(URL_IDENTITY_NSMS);
+        driver.get(URL_WINDOWS_AUTH);
         wait.until(titleIs(TITLE_SILSO));
         driver.findElement(By.className("logo"));
         driver.findElement(By.xpath("//span[text()='ViPNet']"));
@@ -35,7 +36,7 @@ public class AuthElement extends RollOutAuth {
         driver.findElement(By.xpath("//button[text()='Войти']"));
 
         //English
-        driver.get("https://identity.nsms.site/Home/ChangeLanguage?culture=en-US&returnUrl=%2FAuthenticationInfo");
+        driver.get(URL_WINDOWS_AUTH + "/Home/ChangeLanguage?culture=en-US&returnUrl=%2FAuthenticationInfo");
         Thread.sleep(2000);
         wait.until(titleIs(TITLE_SILSO));
         driver.findElement(By.className("logo"));
@@ -48,7 +49,7 @@ public class AuthElement extends RollOutAuth {
         driver.findElement(By.xpath("//button[text()='Log on']"));
 
         //Deutsch
-        driver.get("https://identity.nsms.site/Home/ChangeLanguage?culture=de-DE&returnUrl=%2FAuthenticationInfo");
+        driver.get(URL_WINDOWS_AUTH + "/Home/ChangeLanguage?culture=de-DE&returnUrl=%2FAuthenticationInfo");
         Thread.sleep(2000);
         wait.until(titleIs(TITLE_SILSO));
         driver.findElement(By.className("logo"));
@@ -61,7 +62,7 @@ public class AuthElement extends RollOutAuth {
         driver.findElement(By.xpath("//button[text()='Anmelden']"));
 
         //Portugues
-        driver.get("https://identity.nsms.site/Home/ChangeLanguage?culture=pt-BR&returnUrl=%2FAuthenticationInfo");
+        driver.get(URL_WINDOWS_AUTH + "/Home/ChangeLanguage?culture=pt-BR&returnUrl=%2FAuthenticationInfo");
         Thread.sleep(2000);
         wait.until(titleIs(TITLE_SILSO));
         driver.findElement(By.className("logo"));

@@ -15,6 +15,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 public class RollOutAuth extends RollOutWeb {
+
     public RollOutAuth(WebDriver driver) {
         super(driver);
     }

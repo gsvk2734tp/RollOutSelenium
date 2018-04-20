@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static RollOut.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
@@ -34,10 +36,11 @@ public abstract class RollOutWeb {
     @Parameterized.Parameters
     public static List<Object> data() {
         options.setBinary(operaPath);
-        Object[] data = new Object[]{new ChromeDriver()
-         //       , new FirefoxDriver()
-         //       , new OperaDriver(options)
-         //       , new EdgeDriver()
+        Object[] data = new Object[]{
+                new ChromeDriver(),
+            //    new FirefoxDriver(),
+            //    new OperaDriver(options),
+             //   new EdgeDriver()
         };
         return Arrays.asList(data);
     }

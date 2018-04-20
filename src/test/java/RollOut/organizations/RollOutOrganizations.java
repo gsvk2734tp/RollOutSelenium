@@ -41,10 +41,12 @@ public class RollOutOrganizations extends RollOutWeb {
         driver.findElement(By.cssSelector(BUTTON_ADD_ORG)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(FIELD_URI_ORG)));
         // Assert.assertEquals(driver.findElement(By.cssSelector(FIELD_NAME_ORG)).getCssValue("text"), "Выберите или введите название новой Организации"); Баг
-        Assert.assertEquals(driver.findElement(By.cssSelector(FIELD_URI_ORG)).getCssValue("text"), "");
+        Assert.assertEquals(driver.findElement(By.cssSelector(FIELD_URI_ORG)).getAttribute("value"), "");
         Thread.sleep(1000);
-        driver.findElement(By.cssSelector(FIELD_NAME_ORG)).sendKeys(nameOrg + Keys.ENTER);
+        driver.findElement(By.cssSelector(FIELD_NAME_ORG)).sendKeys(nameOrg);
+        driver.findElement(By.cssSelector(DROPDOWN_SELECT_ORG)).click();
         driver.findElement(By.cssSelector(FIELD_URI_ORG)).sendKeys(uri);
+        Thread.sleep(100);
         driver.findElement(By.cssSelector(BUTTON_SAVE_ORG)).click();
         Thread.sleep(2000);
         wait.until(ExpectedConditions.elementToBeClickable((By.xpath("//td[text()='" + nameOrg + "']"))));
@@ -62,7 +64,8 @@ public class RollOutOrganizations extends RollOutWeb {
         driver.findElement(By.cssSelector(BUTTON_ADD_ORG)).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(FIELD_URI_ORG)));
         Thread.sleep(1000);
-        driver.findElement(By.cssSelector(FIELD_NAME_ORG)).sendKeys(nameOrg + Keys.ENTER);
+        driver.findElement(By.cssSelector(FIELD_NAME_ORG)).sendKeys(nameOrg);
+        driver.findElement(By.cssSelector(DROPDOWN_SELECT_ORG)).click();
         driver.findElement(By.cssSelector(FIELD_URI_ORG)).sendKeys(uri);
         //Проверка, что кнопка сохранить не доступна и появилось сообщение об ошибке
         Thread.sleep(500);

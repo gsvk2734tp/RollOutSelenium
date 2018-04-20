@@ -26,7 +26,7 @@ public class DeleteUser extends RollOutUsers {
 
     @Test
     public void deleteUsersAndCheckVisible() throws InterruptedException {
-        int number = 200;
+        int number = 3;
         Thread.sleep(1000);
         createUsers(number);
 

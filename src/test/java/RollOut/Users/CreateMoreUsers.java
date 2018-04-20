@@ -16,7 +16,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 17.04.2018.
- * Класс для множественного добавления пользователей
+ * Класс для множественного добавления пользователей, ручной запуск
  * TfsTestCase xxx-xxx
  */
 
@@ -25,7 +25,7 @@ public class CreateMoreUsers {
     WebDriverWait wait;
     int count = 0;
 
-    @Test
+//    @Test
     public void create500Users() throws InterruptedException {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 20);
@@ -52,11 +52,5 @@ public class CreateMoreUsers {
             count++;
             Thread.sleep(1000);
         }
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
-        driver = null;
     }
 }

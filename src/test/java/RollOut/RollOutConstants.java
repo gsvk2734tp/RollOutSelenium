@@ -38,6 +38,7 @@ public class RollOutConstants {
     public static final String BUTTON_CANCEL_ORG = "button:nth-child(2)";
     public static final String BUTTON_ADD_ORG = "a.toolbar_button";
     public static final String BUTTON_SAVE_ORG = "button.actions_button";
+    public static final String DROPDOWN_SELECT_ORG = "span.ng-option-label";
     public static final String FIELD_URI_ORG = "input.content_field-text-input";
     public static final String FIELD_NAME_ORG = ".ng-input.ng-star-inserted input";
     public static final String FIELD_ERROR_ORG = ".error.ng-star-inserted";
