@@ -6,7 +6,7 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static RollOut.RollOutConstants.BUTTON_ADD_USER;
+import static RollOut.core.RollOutConstants.BUTTON_ADD_USER;
 
 /**
  * @author Golyshkin.Dmitriy on 27.03.2018.

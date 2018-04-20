@@ -6,10 +6,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-import static RollOut.RollOutConstants.*;
+import static RollOut.core.RollOutConstants.*;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.

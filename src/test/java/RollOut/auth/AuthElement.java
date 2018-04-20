@@ -6,7 +6,7 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static RollOut.RollOutConstants.*;
+import static RollOut.core.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
@@ -14,7 +14,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * Автотест, проверяющий наличие элементов на вкладке с авторизацией
  * TfsTestCase xxx-xxx
  */
-//TODO Оптимизировать переключение языка, сделать метод вместо driver.get(URL_WINDOWS_AUTH + "/Home/ChangeLanguage?culture=en-US&returnUrl=%2FAuthenticationInfo");
 
 @RunWith(value = Parameterized.class)
 public class AuthElement extends RollOutAuth {
@@ -26,9 +25,10 @@ public class AuthElement extends RollOutAuth {
     public void CheckElements() throws InterruptedException {
         driver.get(URL_WINDOWS_AUTH);
         wait.until(titleIs(TITLE_SILSO));
-        driver.findElement(By.className("logo"));
-        driver.findElement(By.xpath("//span[text()='ViPNet']"));
-        driver.findElement(By.xpath("//span[text()='Network Security Management System']"));
+
+        //Rus
+        changeLanguage("ru");
+        checkElementLogoInfotecs();
         driver.findElement(By.xpath("//span[text()='© 2018, ОАО «ИнфоТеКС»']"));
         driver.findElement(By.cssSelector(SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='Имя учетной записи:']"));
@@ -36,12 +36,10 @@ public class AuthElement extends RollOutAuth {
         driver.findElement(By.xpath("//button[text()='Войти']"));
 
         //English
-        driver.get(URL_WINDOWS_AUTH + "/Home/ChangeLanguage?culture=en-US&returnUrl=%2FAuthenticationInfo");
         Thread.sleep(2000);
         wait.until(titleIs(TITLE_SILSO));
-        driver.findElement(By.className("logo"));
-        driver.findElement(By.xpath("//span[text()='ViPNet']"));
-        driver.findElement(By.xpath("//span[text()='Network Security Management System']"));
+        changeLanguage("en");
+        checkElementLogoInfotecs();
         driver.findElement(By.xpath("//span[text()='© 2018, Infotecs']"));
         driver.findElement(By.cssSelector(SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='User name:']"));
@@ -49,12 +47,11 @@ public class AuthElement extends RollOutAuth {
         driver.findElement(By.xpath("//button[text()='Log on']"));
 
         //Deutsch
-        driver.get(URL_WINDOWS_AUTH + "/Home/ChangeLanguage?culture=de-DE&returnUrl=%2FAuthenticationInfo");
+        driver.get(URL_WINDOWS_AUTH + "");
         Thread.sleep(2000);
         wait.until(titleIs(TITLE_SILSO));
-        driver.findElement(By.className("logo"));
-        driver.findElement(By.xpath("//span[text()='ViPNet']"));
-        driver.findElement(By.xpath("//span[text()='Network Security Management System']"));
+        changeLanguage("de");
+        checkElementLogoInfotecs();
         driver.findElement(By.xpath("//span[text()='© 2018, Infotecs']"));
         driver.findElement(By.cssSelector(SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='Benutzername:']"));
@@ -62,12 +59,11 @@ public class AuthElement extends RollOutAuth {
         driver.findElement(By.xpath("//button[text()='Anmelden']"));
 
         //Portugues
-        driver.get(URL_WINDOWS_AUTH + "/Home/ChangeLanguage?culture=pt-BR&returnUrl=%2FAuthenticationInfo");
+        driver.get(URL_WINDOWS_AUTH + "");
         Thread.sleep(2000);
         wait.until(titleIs(TITLE_SILSO));
-        driver.findElement(By.className("logo"));
-        driver.findElement(By.xpath("//span[text()='ViPNet']"));
-        driver.findElement(By.xpath("//span[text()='Network Security Management System']"));
+        changeLanguage("pt");
+        checkElementLogoInfotecs();
         driver.findElement(By.xpath("//span[text()='© 2018, Infotecs']"));
         driver.findElement(By.cssSelector(SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='Nome de usuário:']"));

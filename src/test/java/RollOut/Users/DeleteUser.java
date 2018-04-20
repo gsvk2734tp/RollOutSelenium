@@ -8,8 +8,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static RollOut.RollOutConstants.BUTTON_DELETE_USER;
-import static RollOut.RollOutConstants.BUTTON_DELETE_PRESS_YES_USER_AND_ORG;
+import static RollOut.core.RollOutConstants.BUTTON_DELETE_USER;
+import static RollOut.core.RollOutConstants.BUTTON_DELETE_PRESS_YES_USER_AND_ORG;
 
 /**
  * @author Golyshkin.Dmitriy on 27.03.2018.

@@ -1,16 +1,15 @@
 package RollOut.organizations;
 
-import RollOut.RollOutWeb;
+import RollOut.core.RollOutWeb;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static RollOut.RollOutConstants.*;
+import static RollOut.core.RollOutConstants.*;
 
 /**
  * @author Golyshkin.Dmitriy on 17.04.2018.

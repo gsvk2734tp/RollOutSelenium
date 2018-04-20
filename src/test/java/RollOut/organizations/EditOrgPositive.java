@@ -1,13 +1,10 @@
 package RollOut.organizations;
 
-import RollOut.RandomStr;
+import RollOut.core.RandomStr;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import static RollOut.RollOutConstants.BUTTON_EDIT_ORG;
 
 /**
  * @author Golyshkin.Dmitriy on 17.04.2018.

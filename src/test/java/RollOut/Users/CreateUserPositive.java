@@ -1,6 +1,6 @@
 package RollOut.Users;
 
-import RollOut.RandomStr;
+import RollOut.core.RandomStr;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,8 +14,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.io.IOException;
 import java.util.List;
 
-import static RollOut.RollOutConstants.BUTTON_ADD_USER;
-import static RollOut.RollOutConstants.SPEC_SYMBOLS;
+import static RollOut.core.RollOutConstants.BUTTON_ADD_USER;
+import static RollOut.core.RollOutConstants.SPEC_SYMBOLS;
 
 /**
  * @author Golyshkin.Dmitriy on 27.03.2018.

@@ -1,6 +1,6 @@
 package RollOut.Users;
 
-import RollOut.RollOutWeb;
+import RollOut.core.RollOutWeb;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static RollOut.RollOutConstants.*;
+import static RollOut.core.RollOutConstants.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**

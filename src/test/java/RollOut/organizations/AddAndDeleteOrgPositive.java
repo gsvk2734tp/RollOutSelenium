@@ -1,6 +1,6 @@
 package RollOut.organizations;
 
-import RollOut.RandomStr;
+import RollOut.core.RandomStr;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

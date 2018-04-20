@@ -1,4 +1,4 @@
-package RollOut;
+package RollOut.core;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.
