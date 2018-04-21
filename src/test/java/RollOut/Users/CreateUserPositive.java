@@ -34,7 +34,7 @@ public class CreateUserPositive extends RollOutUsers {
         //Проверка, что поля в карточке пользователя пустые по умолчанию
         Thread.sleep(3000); // Пропуск анимации
         clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(By.cssSelector("span.header_title"));
+        waitElementToBeClickable(TITLE_USER_FORM);
         Thread.sleep(1000);
         Assert.assertEquals(getValueText(FIELD_USER_NAME), "");
         Assert.assertEquals(getValueText(FIELD_USER_EMAIL), "");

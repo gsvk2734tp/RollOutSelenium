@@ -79,7 +79,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         clickButton(getOrgNameElement(nameOrg));
         clickButton(BUTTON_EDIT_ORG);
         Thread.sleep(1000);
-        Assert.assertEquals(getText(ORG_CUURENT_NAME), nameOrg);
+        Assert.assertEquals(getText(ORG_CURRENT_NAME), nameOrg);
         inputOrgUrl(uri);
         clickButton(BUTTON_SAVE_ORG);
         Thread.sleep(2000);
@@ -90,7 +90,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         clickButton(getOrgNameElement(nameOrg));
         clickButton(BUTTON_EDIT_ORG);
         Thread.sleep(1000);
-        Assert.assertEquals(getText(ORG_CUURENT_NAME), nameOrg);
+        Assert.assertEquals(getText(ORG_CURRENT_NAME), nameOrg);
         inputOrgUrl(uri);
         //Проверка, что кнопка сохранить не доступна и появилось сообщение об ошибке
         Thread.sleep(500);

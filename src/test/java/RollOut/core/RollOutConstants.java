@@ -44,16 +44,18 @@ public class RollOutConstants {
     public static final By DROPDOWN_SELECT_ORG = By.cssSelector("span.ng-option-label");
     public static final By FIELD_URI_ORG = By.cssSelector("input.content_field-text-input");
     public static final By FIELD_NAME_ORG = By.cssSelector(".ng-input.ng-star-inserted input");
-    public static final By ORG_CUURENT_NAME = By.cssSelector(".ng-value-label");
+    public static final By ORG_CURRENT_NAME = By.cssSelector(".ng-value-label");
     public static final By FIELD_ERROR_ORG = By.cssSelector(".error.ng-star-inserted");
 
     //Страница пользователи
     public static final By BUTTON_ADD_USER = By.cssSelector("a.toolbar_button");
     public static final By BUTTON_SAVE_USER = By.cssSelector("button:nth-child(1)");
     public static final By BUTTON_DELETE_USER = By.cssSelector(".icon.icon-web-general.icons-general-delete");
-    public static final By BUTTOM_DELETE_ALL_USERS = By.cssSelector("a.toolbar_button:nth-child(1)");
-    public static final By CHECKBOX_SELECTALL_USERS = By.cssSelector("th.user-list_first-column.table_header");
+    public static final By BUTTON_DELETE_ALL_USERS = By.cssSelector("a.toolbar_button:nth-child(1)");
+    public static final By BUTTON_GROUP_OPER_DELETE_USERS = By.xpath("//a[text()='Удалить пользователей']");
+    public static final By CHECKBOX_SELECT_ALL_USERS = By.cssSelector("th.user-list_first-column.table_header");
     public static final By FIELD_ERROR_USER = By.cssSelector(".form_field-error");
+    public static final By TITLE_USER_FORM = By.cssSelector("span.header_title");
     public static final By FIELD_USER_NAME = By.cssSelector("[formcontrolname='name'] input");
     public static final By FIELD_USER_EMAIL = By.cssSelector("[formcontrolname='email'] input");
     public static final By FIELD_USER_PHONE = By.cssSelector("[formcontrolname='phone'] input");

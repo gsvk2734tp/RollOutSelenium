@@ -7,9 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,7 +61,7 @@ public abstract class RollOutUsers extends RollOutWeb {
     public void createUsers(int number) throws InterruptedException {
         for (int i = 0; i < number; i++) {
             clickButton(BUTTON_ADD_USER);
-            waitElementToBeClickable(By.cssSelector("span.header_title"));
+            waitElementToBeClickable(TITLE_USER_FORM);
             Thread.sleep(1000);
             createUser("User" + count, "gmail@gmail", "+7876543210");
         }
@@ -71,7 +69,7 @@ public abstract class RollOutUsers extends RollOutWeb {
 
     public void createUser(String userName, String email, String mobile) throws InterruptedException {
         clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(By.cssSelector("span.header_title"));
+        waitElementToBeClickable(TITLE_USER_FORM);
         Thread.sleep(1000);
         inputUserFields(userName, email, mobile);
         clickButton(BUTTON_SAVE_USER);
@@ -86,7 +84,7 @@ public abstract class RollOutUsers extends RollOutWeb {
     public void createUser(String userName, String email, String mobile, String about) throws InterruptedException {
         //Открытие карточки для создания пользователя
         clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(By.cssSelector("span.header_title"));
+        waitElementToBeClickable(TITLE_USER_FORM);
         Thread.sleep(1000);
         inputUserFields(userName, email, mobile, about);
         clickButton(BUTTON_SAVE_USER);
@@ -101,9 +99,8 @@ public abstract class RollOutUsers extends RollOutWeb {
     public void createUserNegative(String userName, String email, String mobile) throws InterruptedException {
         //Открытие карточки для создания пользователя
         clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(By.cssSelector("span.header_title"));
+        waitElementToBeClickable(TITLE_USER_FORM);
         Thread.sleep(1000);
-        List<WebElement> elements = driver.findElements(By.cssSelector("div.host_input input"));
         if (email == null) {
             inputUserName(userName);
             inputUserPhone(mobile);
@@ -120,7 +117,7 @@ public abstract class RollOutUsers extends RollOutWeb {
     public void createUserNegativeChechAboutField(String userName, String email, String mobile, String about) throws InterruptedException {
         //Открытие карточки для создания пользователя
         clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(By.cssSelector("span.header_title"));
+        waitElementToBeClickable(TITLE_USER_FORM);
         Thread.sleep(1000);
         inputUserFields(userName, email, mobile, about);
         Assert.assertEquals(getValueText(FIELD_USER_ABOUT), (about.substring(0, 128)));
@@ -131,9 +128,9 @@ public abstract class RollOutUsers extends RollOutWeb {
 
     public void deleteAllUsers() throws InterruptedException {
         //wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='a']")));
-        clickButton(CHECKBOX_SELECTALL_USERS);
-        waitElementToBeClickable(By.xpath("//a[text()='Удалить пользователей']"));
-        clickButton(BUTTOM_DELETE_ALL_USERS);
+        clickButton(CHECKBOX_SELECT_ALL_USERS);
+        waitElementToBeClickable(BUTTON_GROUP_OPER_DELETE_USERS);
+        clickButton(BUTTON_DELETE_ALL_USERS);
         waitElementToBeClickable(BUTTON_DELETE_PRESS_YES_USER_AND_ORG);
         clickButton(BUTTON_DELETE_PRESS_YES_USER_AND_ORG);
         Thread.sleep(1000);
