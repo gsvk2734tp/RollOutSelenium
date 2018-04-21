@@ -35,7 +35,7 @@ public class UserElement extends RollOutUsers {
         driver.findElement(By.cssSelector("img.properties-image"));
 
         //Проверка элементов на странице добавления пользователя
-        driver.findElement(By.cssSelector(BUTTON_ADD_USER)).click();
+        clickButton(BUTTON_ADD_USER);
         driver.findElement(By.xpath("//span[text()='Новый пользователь']"));
         driver.findElement(By.xpath("//span[text()='Имя пользователя:']"));
         driver.findElement(By.xpath("//span[text()='Электронная почта:']"));

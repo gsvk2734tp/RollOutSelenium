@@ -58,18 +58,21 @@ public abstract class RollOutWeb {
     public boolean isElementDisplayed(By element) {
         return driver.findElement(element).isDisplayed();
     }
+
     public String getValueText(By element) {
         return driver.findElement(element).getAttribute("value");
     }
+
     public String getText(By element) {
         return driver.findElement(element).getText();
     }
-    public void checkElementEnabled(By element) {
-        Assert.assertTrue(driver.findElement(element).isEnabled());
-    }
+
+    public void checkElementEnabled(By element) { Assert.assertTrue(driver.findElement(element).isEnabled());    }
+
     public void checkElementDisable(By element) {
         Assert.assertFalse(driver.findElement(element).isEnabled());
     }
+
     public void checkElementEmpty(By element) {
         Assert.assertTrue(driver.findElements(element).isEmpty());
     }
@@ -77,6 +80,7 @@ public abstract class RollOutWeb {
     public void clickButton(By element) {
         driver.findElement(element).click();
     }
+
     public void waitElementToBeClickable(By element) {
         wait.until(ExpectedConditions.elementToBeClickable((element)));
     }
@@ -86,7 +90,6 @@ public abstract class RollOutWeb {
         Select dropdown = new Select(driver.findElement(element));
         dropdown.selectByValue(value);
     }
-
 
     public void checkElementLogoInfotecs() {
         driver.findElement(LOGO);

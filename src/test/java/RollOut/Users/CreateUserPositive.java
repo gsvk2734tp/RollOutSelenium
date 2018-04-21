@@ -14,8 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.io.IOException;
 import java.util.List;
 
-import static RollOut.core.RollOutConstants.BUTTON_ADD_USER;
-import static RollOut.core.RollOutConstants.SPEC_SYMBOLS;
+import static RollOut.core.RollOutConstants.*;
 
 /**
  * @author Golyshkin.Dmitriy on 27.03.2018.
@@ -34,14 +33,13 @@ public class CreateUserPositive extends RollOutUsers {
     public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка, что поля в карточке пользователя пустые по умолчанию
         Thread.sleep(3000); // Пропуск анимации
-        driver.findElement(By.cssSelector(BUTTON_ADD_USER)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));
+        clickButton(BUTTON_ADD_USER);
+        waitElementToBeClickable(By.cssSelector("span.header_title"));
         Thread.sleep(1000);
-        List<WebElement> elements = driver.findElements(By.cssSelector("div.host_input input"));
-        Assert.assertEquals(elements.get(0).getAttribute("value"), "");
-        Assert.assertEquals(elements.get(1).getAttribute("value"), "");
-        Assert.assertEquals(elements.get(2).getAttribute("value"), "");
-        Assert.assertEquals(driver.findElement(By.cssSelector("textarea")).getAttribute("value"), "");
+        Assert.assertEquals(getValueText(FIELD_USER_NAME), "");
+        Assert.assertEquals(getValueText(FIELD_USER_EMAIL), "");
+        Assert.assertEquals(getValueText(FIELD_USER_PHONE), "");
+        Assert.assertEquals(getValueText(FIELD_USER_ABOUT), "");
 
         //Проверка имени позитивные сценарии
         createUser("1", "alice@gmail.com", "+792423154131"); // 1 символ в имени

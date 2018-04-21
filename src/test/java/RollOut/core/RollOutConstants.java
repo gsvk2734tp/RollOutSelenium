@@ -48,11 +48,15 @@ public class RollOutConstants {
     public static final By FIELD_ERROR_ORG = By.cssSelector(".error.ng-star-inserted");
 
     //Страница пользователи
-    public static final String BUTTON_ADD_USER = "a.toolbar_button";
-    public static final String BUTTON_SAVE_USER = "button:nth-child(1)";
-    public static final String BUTTON_DELETE_USER = ".icon.icon-web-general.icons-general-delete";
-    public static final String BUTTOM_DELETE_ALL_USERS = "a.toolbar_button:nth-child(1)";
-    public static final String CHECKBOX_SELECTALL_USERS = "th.user-list_first-column.table_header";
-    public static final String FIELD_ERROR_USER = ".form_field-error";
+    public static final By BUTTON_ADD_USER = By.cssSelector("a.toolbar_button");
+    public static final By BUTTON_SAVE_USER = By.cssSelector("button:nth-child(1)");
+    public static final By BUTTON_DELETE_USER = By.cssSelector(".icon.icon-web-general.icons-general-delete");
+    public static final By BUTTOM_DELETE_ALL_USERS = By.cssSelector("a.toolbar_button:nth-child(1)");
+    public static final By CHECKBOX_SELECTALL_USERS = By.cssSelector("th.user-list_first-column.table_header");
+    public static final By FIELD_ERROR_USER = By.cssSelector(".form_field-error");
+    public static final By FIELD_USER_NAME = By.cssSelector("[formcontrolname='name'] input");
+    public static final By FIELD_USER_EMAIL = By.cssSelector("[formcontrolname='email'] input");
+    public static final By FIELD_USER_PHONE = By.cssSelector("[formcontrolname='phone'] input");
+    public static final By FIELD_USER_ABOUT = By.cssSelector("textarea");
 
 }

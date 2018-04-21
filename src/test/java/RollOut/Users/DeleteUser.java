@@ -31,14 +31,14 @@ public class DeleteUser extends RollOutUsers {
         createUsers(number);
 
         for (int i = number - 1; i >= 0; i--) {
-            driver.findElement(By.xpath("//td[text()='User" + i + "']")).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_USER)));
-            driver.findElement(By.cssSelector(BUTTON_DELETE_USER)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(BUTTON_DELETE_PRESS_YES_USER_AND_ORG)));
-            driver.findElement(By.cssSelector(BUTTON_DELETE_PRESS_YES_USER_AND_ORG)).click();
+            checkElementEmpty(getUserNameElement("User" + i));
+            waitElementToBeClickable(BUTTON_DELETE_USER);
+            clickButton(BUTTON_DELETE_USER);
+            waitElementToBeClickable(BUTTON_DELETE_PRESS_YES_USER_AND_ORG);
+            clickButton(BUTTON_DELETE_PRESS_YES_USER_AND_ORG);
             Thread.sleep(2000);
             //Проверяем, что пользователь удален
-            Assert.assertTrue(driver.findElements(By.xpath("//td[text()='User" + i + "']")).isEmpty());
+            checkElementEmpty(getUserNameElement("User" + i));
         }
     }
 }

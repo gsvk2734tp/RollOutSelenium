@@ -68,8 +68,8 @@ public class EditUserNegative extends RollOutUsers {
         editUserNegative("User" + count, "gmail@gmail.com", "+71234", RandomStr.getStr(129)); // 129 симв
         editUserNegative("User" + count, "gmail@gmail.com", "", RandomStr.getStr(129)); // 129 симв
         editUserNegative("User" + count, "", "+71234", RandomStr.getStr(129)); // 129 симв
-
     }
+
     @After
     public void deleteAllUsersAfterTest() throws InterruptedException {
         deleteAllUsers();

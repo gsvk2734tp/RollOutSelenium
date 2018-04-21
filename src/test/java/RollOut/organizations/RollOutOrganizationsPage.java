@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static RollOut.core.RollOutConstants.*;
 
@@ -20,7 +19,6 @@ import static RollOut.core.RollOutConstants.*;
 //TODO после интеграции с NSMS добавить проверку на смену имени Организации
 
 public class RollOutOrganizationsPage extends RollOutWeb {
-
     public Actions actions;
 
     public RollOutOrganizationsPage(WebDriver driver) {
@@ -45,9 +43,9 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         // Assert.assertEquals(driver.findElement(By.cssSelector(FIELD_NAME_ORG)).getCssValue("text"), "Выберите или введите название новой Организации"); Баг
         Assert.assertEquals(getValueText(FIELD_URI_ORG), "");
         Thread.sleep(1000);
-        inputText(FIELD_NAME_ORG, nameOrg);
+        inputOrgName(nameOrg);
         clickButton(DROPDOWN_SELECT_ORG);
-        inputText(FIELD_URI_ORG, uri);
+        inputOrgUrl(uri);
         Thread.sleep(100);
         clickButton(BUTTON_SAVE_ORG);
         Thread.sleep(2000);
@@ -66,9 +64,9 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         clickButton(BUTTON_ADD_ORG);
         waitElementToBeClickable(FIELD_URI_ORG);
         Thread.sleep(1000);
-        inputText(FIELD_NAME_ORG, nameOrg);
+        inputOrgName(nameOrg);
         clickButton(DROPDOWN_SELECT_ORG);
-        inputText(FIELD_URI_ORG, uri);
+        inputOrgUrl(uri);
         //Проверка, что кнопка сохранить не доступна и появилось сообщение об ошибке
         Thread.sleep(500);
         checkElementDisable(BUTTON_SAVE_ORG);
@@ -82,8 +80,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         clickButton(BUTTON_EDIT_ORG);
         Thread.sleep(1000);
         Assert.assertEquals(getText(ORG_CUURENT_NAME), nameOrg);
-        driver.findElement((FIELD_URI_ORG)).clear();
-        inputText(FIELD_URI_ORG, uri);
+        inputOrgUrl(uri);
         clickButton(BUTTON_SAVE_ORG);
         Thread.sleep(2000);
         waitElementToBeClickable(getOrgNameElement(nameOrg));
@@ -94,14 +91,23 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         clickButton(BUTTON_EDIT_ORG);
         Thread.sleep(1000);
         Assert.assertEquals(getText(ORG_CUURENT_NAME), nameOrg);
-        driver.findElement((FIELD_URI_ORG)).clear();
-        inputText(FIELD_URI_ORG, uri);
+        inputOrgUrl(uri);
         //Проверка, что кнопка сохранить не доступна и появилось сообщение об ошибке
         Thread.sleep(500);
         checkElementDisable(BUTTON_SAVE_ORG);
         checkElementEnabled(FIELD_ERROR_ORG);
         clickButton(BUTTON_CANCEL_ORG);
         checkElementEmpty(getOrgNameElement(nameOrg));
+    }
+
+    public void inputOrgName(String name) {
+        driver.findElement((FIELD_NAME_ORG)).clear();
+        inputText(FIELD_NAME_ORG, name);
+    }
+
+    public void inputOrgUrl(String uri) {
+        driver.findElement((FIELD_URI_ORG)).clear();
+        inputText(FIELD_URI_ORG, uri);
     }
 
     public By getOrgNameElement(String orgName) {
