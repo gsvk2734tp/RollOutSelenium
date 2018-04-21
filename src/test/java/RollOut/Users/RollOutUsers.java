@@ -1,5 +1,6 @@
 package RollOut.Users;
 
+import RollOut.auth.RollOutAuthPage;
 import RollOut.core.RollOutWeb;
 import org.junit.After;
 import org.junit.Assert;
@@ -30,7 +31,8 @@ public abstract class RollOutUsers extends RollOutWeb {
 
     @Before
     public void setUp() throws InterruptedException {
-        logonSilsoDefault();
+        RollOutAuthPage authPage = new RollOutAuthPage(driver);
+        authPage.logonSilsoDefault();
         selectFirstOrganization();
     }
 

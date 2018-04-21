@@ -20,7 +20,7 @@ import static RollOut.core.RollOutConstants.*;
 //TODO: Проверка видимость элементов на верхней панели
 
 @RunWith(value = Parameterized.class)
-public class OrgElement extends RollOutOrganizations {
+public class OrgElement extends RollOutOrganizationsPage {
 
     public OrgElement(WebDriver driver) {
         super(driver);
@@ -37,30 +37,27 @@ public class OrgElement extends RollOutOrganizations {
         driver.findElement(By.xpath("//td[text()='Ромашка']"));
 
         //Проверка невидимого элемента Редактировать у первой в списке Орг
-        driver.findElement(By.xpath("//td[text()='Ромашка']")).click(); // Делает данную организацию активной, все проверки далее идут с ней
-        Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).isEnabled());
+        clickButton(By.xpath("//td[text()='Ромашка']")); // Делает данную организацию активной, все проверки далее идут с ней
+        checkElementEnabled(BUTTON_EDIT_ORG);
 
         //Проверка элементов в карточке Организации
-        driver.findElement(By.cssSelector(BUTTON_EDIT_ORG)).click();
+        clickButton(BUTTON_EDIT_ORG);
         driver.findElement(By.xpath("//div[contains(text(),'Данные организации в Rollout Center')]"));
         driver.findElement(By.xpath("//div[contains(text(),'Название:')]"));
         driver.findElement(By.xpath("//div[contains(text(),'URI префикс для авторизации пользователей:')]"));
-        driver.findElement(By.cssSelector(BUTTON_CANCEL_ORG)).click();
+        clickButton(BUTTON_CANCEL_ORG);
         Thread.sleep(1000);
 
         //Проверка невидимого элемента Удалить
-        Assert.assertTrue(driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)).isEnabled());
+        checkElementEnabled(BUTTON_DELETE_ORG);
         //Проверка элементов в карточке подтверждения удаления организации
-        actions.moveToElement(driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)));
-        driver.findElement(By.cssSelector(BUTTON_DELETE_ORG)).click();
+        clickButton(BUTTON_DELETE_ORG);
         driver.findElement(By.xpath("//div[contains(text(),'Удаление организации')]"));
         driver.findElement(By.xpath("//div[contains(text(),'Подтвердите удаление')]"));
-        driver.findElement(By.cssSelector(BUTTON_CANCEL_ORG)).click();
+        clickButton(BUTTON_CANCEL_ORG);
         Thread.sleep(1000);
 
         //Проверка лого
-        driver.findElement(By.className("brand_logo"));
-        driver.findElement(By.xpath("//span[text()='ViPNet']"));
-        driver.findElement(By.xpath("//span[text()='Network Security Management System']"));
+        checkElementLogoInfotecs();
     }
 }

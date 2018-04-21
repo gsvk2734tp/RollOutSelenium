@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
+
 /**
  * @author Golyshkin.Dmitriy on 27.03.2018.
  * Автотест, проверяющий авторизацию
@@ -13,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 //TODO Тест не сделан, будет доработан после интеграции с NSMS
 
 @RunWith(value = Parameterized.class)
-public class AuthSislo extends RollOutAuth {
+public class AuthSislo extends RollOutAuthPage {
     public AuthSislo(WebDriver driver) {
         super(driver);
     }

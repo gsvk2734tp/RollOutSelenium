@@ -16,7 +16,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 @RunWith(value = Parameterized.class)
-public class AuthElement extends RollOutAuth {
+public class AuthElement extends RollOutAuthPage {
     public AuthElement(WebDriver driver) {
         super(driver);
     }
@@ -30,7 +30,7 @@ public class AuthElement extends RollOutAuth {
         changeLanguage("ru");
         checkElementLogoInfotecs();
         driver.findElement(By.xpath("//span[text()='© 2018, ОАО «ИнфоТеКС»']"));
-        driver.findElement(By.cssSelector(SELECT_LANGUAGE_AUTH));
+        driver.findElement(SELECT_LANGUAGE_AUTH);
         driver.findElement(By.xpath("//label[text()='Имя учетной записи:']"));
         driver.findElement(By.xpath("//label[text()='Пароль:']"));
         driver.findElement(By.xpath("//button[text()='Войти']"));
@@ -41,7 +41,7 @@ public class AuthElement extends RollOutAuth {
         changeLanguage("en");
         checkElementLogoInfotecs();
         driver.findElement(By.xpath("//span[text()='© 2018, Infotecs']"));
-        driver.findElement(By.cssSelector(SELECT_LANGUAGE_AUTH));
+        driver.findElement((SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='User name:']"));
         driver.findElement(By.xpath("//label[text()='Password:']"));
         driver.findElement(By.xpath("//button[text()='Log on']"));
@@ -53,7 +53,7 @@ public class AuthElement extends RollOutAuth {
         changeLanguage("de");
         checkElementLogoInfotecs();
         driver.findElement(By.xpath("//span[text()='© 2018, Infotecs']"));
-        driver.findElement(By.cssSelector(SELECT_LANGUAGE_AUTH));
+        driver.findElement((SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='Benutzername:']"));
         driver.findElement(By.xpath("//label[text()='Passwort:']"));
         driver.findElement(By.xpath("//button[text()='Anmelden']"));
@@ -65,7 +65,7 @@ public class AuthElement extends RollOutAuth {
         changeLanguage("pt");
         checkElementLogoInfotecs();
         driver.findElement(By.xpath("//span[text()='© 2018, Infotecs']"));
-        driver.findElement(By.cssSelector(SELECT_LANGUAGE_AUTH));
+        driver.findElement((SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='Nome de usuário:']"));
         driver.findElement(By.xpath("//label[text()='Senha:']"));
         driver.findElement(By.xpath("//button[text()='Logon']"));

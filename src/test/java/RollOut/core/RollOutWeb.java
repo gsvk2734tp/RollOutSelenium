@@ -1,11 +1,14 @@
 package RollOut.core;
 
+import org.junit.Assert;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.Arrays;
@@ -46,13 +49,50 @@ public abstract class RollOutWeb {
         driver.manage().window().maximize();
     }
 
-    public void logonSilsoDefault() {
-        driver.get(URL_WINDOWS_SITE);
-        wait.until(titleIs(TITLE_SILSO));
-        driver.findElement(By.id("UserName")).sendKeys(LOGIN);
-        driver.findElement(By.id("Password")).sendKeys(PASSWORD);
-        driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
-        wait.until(titleIs(TITLE_APP));
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
+    public void inputText(By element, String text) {
+        WebElement webElement = driver.findElement(element);
+        webElement.clear();
+        webElement.sendKeys(text);
+    }
+
+    public boolean isElementDisplayed(By element) {
+        return driver.findElement(element).isDisplayed();
+    }
+    public String getValueText(By element) {
+        return driver.findElement(element).getAttribute("value");
+    }
+    public String getText(By element) {
+        return driver.findElement(element).getText();
+    }
+    public void checkElementEnabled(By element) {
+        Assert.assertTrue(driver.findElement(element).isEnabled());
+    }
+    public void checkElementDisable(By element) {
+        Assert.assertFalse(driver.findElement(element).isEnabled());
+    }
+    public void checkElementEmpty(By element) {
+        Assert.assertTrue(driver.findElements(element).isEmpty());
+    }
+
+    public void clickButton(By element) {
+        driver.findElement(element).click();
+    }
+    public void waitElementToBeClickable(By element) {
+        wait.until(ExpectedConditions.elementToBeClickable((element)));
+    }
+
+    //TODO разобраться, что делает метод
+    public void selectDropdownOption(By element, String value){
+        Select dropdown = new Select(driver.findElement(element));
+        dropdown.selectByValue(value);
+    }
+
+
+    public void checkElementLogoInfotecs() {
+        driver.findElement(LOGO);
+        driver.findElement(LOGO_VIPNET);
+        driver.findElement(LOGO_NSMS);
     }
 }
+
+

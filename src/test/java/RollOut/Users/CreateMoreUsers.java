@@ -23,7 +23,7 @@ public class CreateMoreUsers {
     WebDriverWait wait;
     int count = 0;
 
-//    @Test
+//TODO переделать    @Test
     public void create500Users() throws InterruptedException {
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 20);
@@ -32,7 +32,7 @@ public class CreateMoreUsers {
         wait.until(titleIs(TITLE_SILSO));
         driver.findElement(By.id("UserName")).sendKeys("alice");
         driver.findElement(By.id("Password")).sendKeys("P@ssw0rd");
-        driver.findElement(By.cssSelector(BUTTON_LOGIN)).click();
+        driver.findElement(By.cssSelector("button.btn-login")).click();
         wait.until(titleIs(TITLE_APP));
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//td[text()='Ромашка']")));
         driver.get(URL_NSMS_USERS);

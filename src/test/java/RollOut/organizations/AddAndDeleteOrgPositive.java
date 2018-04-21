@@ -14,7 +14,8 @@ import org.openqa.selenium.interactions.Actions;
  */
 
 @RunWith(value = Parameterized.class)
-public class AddAndDeleteOrgPositive extends RollOutOrganizations {
+public class AddAndDeleteOrgPositive extends RollOutOrganizationsPage {
+    private String orgName = "Быки и коровы";
 
     public AddAndDeleteOrgPositive(WebDriver driver) {
         super(driver);
@@ -23,11 +24,11 @@ public class AddAndDeleteOrgPositive extends RollOutOrganizations {
 
     @Test
     public void addAndDeleteOrg() throws InterruptedException {
-        addOrgPositive("Быки и коровы", RandomStr.getStr(1));
-        deleteOrg("Быки и коровы");
-        addOrgPositive("Быки и коровы", RandomStr.getStr(35));
-        deleteOrg("Быки и коровы");
-        addOrgPositive("Быки и коровы", RandomStr.getStr(64));
-        deleteOrg("Быки и коровы");
+        addOrgPositive(orgName, RandomStr.getStr(1));
+        deleteOrg(orgName);
+        addOrgPositive(orgName, RandomStr.getStr(35));
+        deleteOrg(orgName);
+        addOrgPositive(orgName, RandomStr.getStr(64));
+        deleteOrg(orgName);
     }
 }

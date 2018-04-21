@@ -6,16 +6,17 @@ import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static RollOut.core.RollOutConstants.URL_WINDOWS_AUTH;
+import static RollOut.core.RollOutConstants.*;
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.
  * Класс, для работы со страниец Авторизации
  */
 
-public class RollOutAuth extends RollOutWeb {
+public class RollOutAuthPage extends RollOutWeb {
 
-    public RollOutAuth(WebDriver driver) {
+    public RollOutAuthPage(WebDriver driver) {
         super(driver);
     }
 
@@ -28,7 +29,41 @@ public class RollOutAuth extends RollOutWeb {
         driver.quit();
         driver = null;
     }
-    public void changeLanguage (String language) {
+
+    public void inputUserName(String userName) {
+        inputText(NAME_FIElD, userName);
+    }
+
+    public void inputPassword(String password) {
+        inputText(PASSWORD_FIELD, password);
+    }
+
+    public void clickLogin() {
+        clickButton(LOGIN_BUTTON);
+    }
+
+    public void logonSilsoDefault() {
+        driver.get(URL_WINDOWS_SITE);
+        wait.until(titleIs(TITLE_SILSO));
+        inputUserName(LOGIN);
+        inputPassword(PASSWORD);
+        clickLogin();
+        wait.until(titleIs(TITLE_APP));
+        waitElementToBeClickable(By.xpath("//td[text()='Ромашка']"));
+    }
+
+    public void logonSilso(String userName, String password) {
+        driver.get(URL_WINDOWS_SITE);
+        wait.until(titleIs(TITLE_SILSO));
+        inputUserName(userName);
+        inputPassword(password);
+        clickLogin();
+        wait.until(titleIs(TITLE_APP));
+        waitElementToBeClickable(By.xpath("//td[text()='Ромашка']"));
+    }
+
+
+    public void changeLanguage(String language) {
         switch (language) {
             case "en": {
                 driver.get(URL_WINDOWS_AUTH + "/Home/ChangeLanguage?culture=en-US&returnUrl=%2FAuthenticationInfo");
@@ -48,11 +83,4 @@ public class RollOutAuth extends RollOutWeb {
             }
         }
     }
-
-    public void checkElementLogoInfotecs() {
-        driver.findElement(By.className("logo"));
-        driver.findElement(By.xpath("//span[text()='ViPNet']"));
-        driver.findElement(By.xpath("//span[text()='Network Security Management System']"));
-    }
-
 }

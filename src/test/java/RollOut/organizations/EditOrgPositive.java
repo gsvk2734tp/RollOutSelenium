@@ -13,17 +13,19 @@ import org.openqa.selenium.WebDriver;
  */
 
 @RunWith(value = Parameterized.class)
-public class EditOrgPositive extends RollOutOrganizations {
+public class EditOrgPositive extends RollOutOrganizationsPage {
+    private String orgName = "Быки и коровы";
+
     public EditOrgPositive(WebDriver driver) {
         super(driver);
     }
 
     @Test
     public void editOrgPositive() throws InterruptedException {
-        addOrgPositive("Быки и коровы", RandomStr.getStr(30));
-        editOrgPostive("Быки и коровы", RandomStr.getStr(1));
-        editOrgPostive("Быки и коровы", RandomStr.getStr(19));
-        editOrgPostive("Быки и коровы", RandomStr.getStr(64));
-        deleteOrg("Быки и коровы");
+        addOrgPositive(orgName, RandomStr.getStr(30));
+        editOrgPostive(orgName, RandomStr.getStr(1));
+        editOrgPostive(orgName, RandomStr.getStr(19));
+        editOrgPostive(orgName, RandomStr.getStr(64));
+        deleteOrg(orgName);
     }
 }

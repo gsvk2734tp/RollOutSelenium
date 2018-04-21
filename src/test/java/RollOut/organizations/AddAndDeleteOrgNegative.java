@@ -1,7 +1,6 @@
 package RollOut.organizations;
 
 import RollOut.core.RandomStr;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -15,8 +14,9 @@ import org.openqa.selenium.WebDriver;
  */
 
 @RunWith(value = Parameterized.class)
-public class AddAndDeleteOrgNegative extends RollOutOrganizations{
+public class AddAndDeleteOrgNegative extends RollOutOrganizationsPage {
     private String orgUrl;
+    private String orgName = "Быки и коровы";
 
     public AddAndDeleteOrgNegative(WebDriver driver) {
         super(driver);
@@ -26,12 +26,12 @@ public class AddAndDeleteOrgNegative extends RollOutOrganizations{
     public void addAndDeleteOrg() throws InterruptedException {
         //Проверка на ввод более 64 символов
         orgUrl = RandomStr.getStr(128);
-        addOrgPositive("Быки и коровы", orgUrl);
-        Assert.assertTrue(driver.findElement(By.xpath("//td[text()='" + orgUrl.substring(0,64) + "']")).isEnabled());
-        deleteOrg("Быки и коровы");
+        addOrgPositive(orgName, orgUrl);
+        checkElementEnabled(By.xpath("//td[text()='" + orgUrl.substring(0,64) + "']"));
+        deleteOrg(orgName);
 
         //Проверка на пустой ввод
-        addOrgNegative("Быки и коровы", "");
+        addOrgNegative(orgName, "");
 
         /*Проверка на кириллицу, блокирующий баг
         addOrgNegative("Быки и коровы", "www + RandomStr.getRusStr(32)");

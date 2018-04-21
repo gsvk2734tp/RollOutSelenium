@@ -1,7 +1,6 @@
 package RollOut.organizations;
 
 import RollOut.core.RandomStr;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -15,8 +14,9 @@ import org.openqa.selenium.WebDriver;
  */
 
 @RunWith(value = Parameterized.class)
-public class EditOrgNegative extends RollOutOrganizations {
+public class EditOrgNegative extends RollOutOrganizationsPage {
     private String orgUrl;
+    private String orgName = "Ромашка";
 
     public EditOrgNegative(WebDriver driver) {
         super(driver);
@@ -25,8 +25,8 @@ public class EditOrgNegative extends RollOutOrganizations {
     public void editOrgNegative() throws InterruptedException {
         //Проверка на ввод более 64 символов
         orgUrl = RandomStr.getStr(128);
-        editOrgPostive("Ромашка", orgUrl);
-        Assert.assertTrue(driver.findElement(By.xpath("//td[text()='" + orgUrl.substring(0,64) + "']")).isEnabled());
+        editOrgPostive(orgName, orgUrl);
+        checkElementEnabled(By.xpath("//td[text()='" + orgUrl.substring(0,64) + "']"));
 
         /*Проверка на пустой ввод, блокирующий баг
         editOrgNegative("Ромашка", ""); */
