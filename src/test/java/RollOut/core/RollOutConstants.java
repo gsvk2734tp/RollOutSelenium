@@ -60,5 +60,4 @@ public class RollOutConstants {
     public static final By FIELD_USER_EMAIL = By.cssSelector("[formcontrolname='email'] input");
     public static final By FIELD_USER_PHONE = By.cssSelector("[formcontrolname='phone'] input");
     public static final By FIELD_USER_ABOUT = By.cssSelector("textarea");
-
 }
