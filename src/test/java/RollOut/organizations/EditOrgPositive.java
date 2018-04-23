@@ -1,6 +1,7 @@
 package RollOut.organizations;
 
 import RollOut.core.RandomStr;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -26,6 +27,9 @@ public class EditOrgPositive extends RollOutOrganizationsPage {
         editOrgPostive(orgName, RandomStr.getStr(1));
         editOrgPostive(orgName, RandomStr.getStr(19));
         editOrgPostive(orgName, RandomStr.getStr(64));
+    }
+    @After
+    public void deleteOrg() throws InterruptedException {
         deleteOrg(orgName);
     }
 }

@@ -73,7 +73,7 @@ public abstract class RollOutUsers extends RollOutWeb {
         Thread.sleep(1000);
         inputUserFields(userName, email, mobile);
         clickButton(BUTTON_SAVE_USER);
-        waitElementToBeClickable(getUserNameElement("Создан пользователь " + userName));
+        waitElementToBeClickable(getTitleCreateUser(userName));
         count++;
         //Проверка, что пользователь появился в списке
         waitElementToBeClickable(getUserNameElement(userName));
@@ -88,7 +88,7 @@ public abstract class RollOutUsers extends RollOutWeb {
         Thread.sleep(1000);
         inputUserFields(userName, email, mobile, about);
         clickButton(BUTTON_SAVE_USER);
-        waitElementToBeClickable(getUserNameElement("Создан пользователь " + userName));
+        waitElementToBeClickable(getTitleCreateUser(userName));
         count++;
         //Проверка, что пользователь появился в списке
         waitElementToBeClickable(getUserNameElement(userName));
@@ -230,6 +230,10 @@ public abstract class RollOutUsers extends RollOutWeb {
     public void inputUserAbout(String about) {
         driver.findElement(FIELD_USER_ABOUT).clear();
         inputText(FIELD_USER_ABOUT, about);
+    }
+
+    public By getTitleCreateUser(String userName) {
+        return By.xpath("//p[text()='Создан пользователь " + userName + "']");
     }
 
     public By getUserNameElement(String userName) {

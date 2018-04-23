@@ -1,5 +1,6 @@
 package RollOut.Users;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +32,7 @@ public class DeleteUser extends RollOutUsers {
         createUsers(number);
 
         for (int i = number - 1; i >= 0; i--) {
-            checkElementEmpty(getUserNameElement("User" + i));
+            clickButton(getUserNameElement("User" + i));
             waitElementToBeClickable(BUTTON_DELETE_USER);
             clickButton(BUTTON_DELETE_USER);
             waitElementToBeClickable(BUTTON_DELETE_PRESS_YES_USER_AND_ORG);

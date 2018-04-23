@@ -50,6 +50,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         clickButton(BUTTON_SAVE_ORG);
         Thread.sleep(2000);
         waitElementToBeClickable(getOrgNameElement(nameOrg));
+        Thread.sleep(1000);
     }
 
     public void deleteOrg(String nameOrg) throws InterruptedException {
@@ -57,7 +58,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         clickButton(BUTTON_DELETE_ORG);
         clickButton(BUTTON_DELETE_PRESS_YES_USER_AND_ORG);
         Thread.sleep(1000);
-        checkElementEnabled(getOrgNameElement(nameOrg));
+        checkElementEmpty(getOrgNameElement(nameOrg));
     }
 
     public void addOrgNegative(String nameOrg, String uri) throws InterruptedException {
@@ -73,6 +74,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         checkElementEnabled(FIELD_ERROR_ORG);
         clickButton(BUTTON_CANCEL_ORG);
         checkElementEmpty(getOrgNameElement(nameOrg));
+        Thread.sleep(1000);
     }
 
     public void editOrgPostive(String nameOrg, String uri) throws InterruptedException {
@@ -84,6 +86,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         clickButton(BUTTON_SAVE_ORG);
         Thread.sleep(2000);
         waitElementToBeClickable(getOrgNameElement(nameOrg));
+        Thread.sleep(1000);
     }
 
     public void editOrgNegative(String nameOrg, String uri) throws InterruptedException {
@@ -98,6 +101,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         checkElementEnabled(FIELD_ERROR_ORG);
         clickButton(BUTTON_CANCEL_ORG);
         checkElementEmpty(getOrgNameElement(nameOrg));
+        Thread.sleep(1000);
     }
 
     public void inputOrgName(String name) {

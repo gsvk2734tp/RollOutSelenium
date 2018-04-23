@@ -41,5 +41,7 @@ public class UserElement extends RollOutUsers {
         driver.findElement(By.xpath("//span[text()='Электронная почта:']"));
         driver.findElement(By.xpath("//span[text()='Телефон:']"));
         driver.findElement(By.xpath("//span[text()='Описание:']"));
+
+        // checkElementLogoInfotecs(); логотип еще не сделали
     }
 }
