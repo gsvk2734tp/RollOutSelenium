@@ -27,7 +27,7 @@ public class EditUserNegative extends RollOutUsers {
 
         /**Проверка имени негативные */
         //TODO editUserNegative("", "", "", ""); // все поля пустые
-        editUserNegative("", null, null, null); // пустое user
+        editUserNegative("", null, null, null); // пустое user, Edge падает - особенность драйвера
 
         /* Проверка на спецсимволы в имени, запрещены, пока что баг 42860
         for (char sumb : specSumbUserName) {

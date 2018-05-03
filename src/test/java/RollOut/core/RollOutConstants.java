@@ -13,8 +13,8 @@ public class RollOutConstants {
     public static final String URL_NSMS_USERS = "http://rollout.nsms.site/users";
     public static final String URL_NSMS_SITE_TEST = "http://rollout-test.nsms.site";
     public static final String URL_NSMS_USERS_TEST = "http://rollout-test.nsms.site/users";
-    public static final String URL_WINDOWS_SITE = "http://10.0.15.237:8090";
-    public static final String URL_WINDOWS_USERS = "http://10.0.15.237:8090/users";
+    public static final String URL_WINDOWS_SITE = "https://10.0.15.237:8090";
+    public static final String URL_WINDOWS_USERS = "https://10.0.15.237:8090/users";
     public static final String URL_WINDOWS_AUTH = "https://10.0.15.237:8811";
     public static final String URL_IDENTITY_NSMS = "https://identity.nsms.site/account/login";
 

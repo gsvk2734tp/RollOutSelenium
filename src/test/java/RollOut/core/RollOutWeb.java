@@ -28,19 +28,15 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 public abstract class RollOutWeb {
     public WebDriver driver;
     public WebDriverWait wait;
-    public static OperaOptions options = new OperaOptions();
     public int count = 0;
     public char[] specSumb = {'!', '#', '$', '%', '&', '\'', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
     public char[] specSumbUserName = {'\\', '/', ':', '*', '?', '"', '<', '>', '|'};
-    public static String operaPath = "C:\\Program Files\\Opera\\52.0.2871.40\\opera.exe";
 
     @Parameterized.Parameters
     public static List<Object> data() {
-        options.setBinary(operaPath);
         Object[] data = new Object[]{
-                new ChromeDriver(),
-                new FirefoxDriver(),
-                new OperaDriver(options),
+            //    new ChromeDriver(),
+            //    new FirefoxDriver(),
                 new EdgeDriver()
         };
         return Arrays.asList(data);
