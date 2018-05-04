@@ -1,0 +1,1 @@
+[0428/114442.670:ERROR:main_dll_loader_win.cc(156)] Failed to load Chrome DLL from C:\Program Files\Opera\52.0.2871.40\opera_browser.dll: Произошел сбой в программе инициализации библиотеки динамической компоновки (DLL). (0x45A)
