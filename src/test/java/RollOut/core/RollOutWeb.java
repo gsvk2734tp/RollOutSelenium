@@ -35,9 +35,9 @@ public abstract class RollOutWeb {
     @Parameterized.Parameters
     public static List<Object> data() {
         Object[] data = new Object[]{
-            //    new ChromeDriver(),
-            //    new FirefoxDriver(),
-                new EdgeDriver()
+                new ChromeDriver(),
+                new FirefoxDriver(),
+             //   new EdgeDriver()
         };
         return Arrays.asList(data);
     }

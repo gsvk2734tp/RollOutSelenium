@@ -29,14 +29,14 @@ public class CreateMoreUsers extends RollOutUsers {
         super(driver);
     }
 
-//    @Test
+    @Test
     public void create500Users() throws InterruptedException {
         Thread.sleep(3000);
         for (int i = 0; i < 12000; i++) {
             clickButton(BUTTON_ADD_USER);
             waitElementToBeClickable(TITLE_USER_FORM);
             Thread.sleep(400);
-            inputUserFields("UserStep3" + count, "gmail@gmail.com", "+79268762282");
+            inputUserFields("User" + count, "gmail@gmail.com", "+79268762282");
             clickButton(BUTTON_SAVE_USER);
             count++;
             Thread.sleep(400);
