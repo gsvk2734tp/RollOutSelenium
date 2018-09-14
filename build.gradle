@@ -17,9 +17,6 @@ dependencies {
     compile group: 'javax.mail', name: 'mail', version: '1.4'
     compile group: 'org.apache.commons', name: 'commons-email', version: '1.3'
 }
-task wrapper(type: Wrapper) {
-    gradleVersion = "1.12"
-}
 
 test {
     beforeTest { descriptor ->

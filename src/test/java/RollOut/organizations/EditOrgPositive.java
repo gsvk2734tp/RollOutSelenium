@@ -12,10 +12,10 @@ import org.openqa.selenium.WebDriver;
  * Автотест, проверяющий позитивные сценарии редактирования Организации
  * TfsTestCase xxx-xxx
  */
-
+/* Временно по требования запрещено редактирование Организации
 @RunWith(value = Parameterized.class)
 public class EditOrgPositive extends RollOutOrganizationsPage {
-    private String orgName = "Быки и коровы";
+    private String orgName = "Organization's network 1";
 
     public EditOrgPositive(WebDriver driver) {
         super(driver);
@@ -32,4 +32,4 @@ public class EditOrgPositive extends RollOutOrganizationsPage {
     public void deleteOrg() throws InterruptedException {
         deleteOrg(orgName);
     }
-}
+} */

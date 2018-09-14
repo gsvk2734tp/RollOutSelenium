@@ -33,9 +33,7 @@ public class CreateUserPositive extends RollOutUsers {
     public void createNewUserAndCheckVisible() throws IOException, InterruptedException {
         //Проверка, что поля в карточке пользователя пустые по умолчанию
         Thread.sleep(3000); // Пропуск анимации
-        clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(TITLE_USER_FORM);
-        Thread.sleep(1000);
+        clickAddUserButton();
         Assert.assertEquals(getValueText(FIELD_USER_NAME), "");
         Assert.assertEquals(getValueText(FIELD_USER_EMAIL), "");
         Assert.assertEquals(getValueText(FIELD_USER_PHONE), "");
@@ -53,6 +51,7 @@ public class CreateUserPositive extends RollOutUsers {
         //createUser("User" + count, "A" + "@" + RandomStr.getStrDomain(252), "+7123"); // 1 и 252, баг 42892
         createUser("User" + count, "3" + SPEC_SYMBOLS + "@d", "+7123"); // спецсимволы в локальной части
         //createUser("User" + count, (RandomStr.getStr(60) + "@" + RandomStr.getStrDomain(193)), "+7123"); // 254 cимв, баг 42892
+        //TODO добавить проверку на обязательно номера телефона ИЛИ емейл в оба поля + в test editpositiveusers
 
         //Проверка телефона позитивные сценарии
         createUser("User" + count, "z@1", "123"); // от трех симв

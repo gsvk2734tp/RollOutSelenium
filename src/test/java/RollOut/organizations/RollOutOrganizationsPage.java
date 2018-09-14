@@ -44,12 +44,13 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         Assert.assertEquals(getValueText(FIELD_URI_ORG), "");
         Thread.sleep(1000);
         inputOrgName(nameOrg);
+        //TODO clickButton сделать через xpath выбор по тексту
         clickButton(DROPDOWN_SELECT_ORG);
         inputOrgUrl(uri);
         Thread.sleep(100);
         clickButton(BUTTON_SAVE_ORG);
         Thread.sleep(2000);
-        waitElementToBeClickable(getOrgNameElement(nameOrg));
+        checkElementEnabled(getOrgNameElement(nameOrg));
         Thread.sleep(1000);
     }
 
@@ -77,6 +78,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         Thread.sleep(1000);
     }
 
+    /* По требования времено запрещено редактирование
     public void editOrgPostive(String nameOrg, String uri) throws InterruptedException {
         clickButton(getOrgNameElement(nameOrg));
         clickButton(BUTTON_EDIT_ORG);
@@ -87,8 +89,9 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         Thread.sleep(2000);
         waitElementToBeClickable(getOrgNameElement(nameOrg));
         Thread.sleep(1000);
-    }
+    } */
 
+    /* По требования времено запрещено редактирование
     public void editOrgNegative(String nameOrg, String uri) throws InterruptedException {
         clickButton(getOrgNameElement(nameOrg));
         clickButton(BUTTON_EDIT_ORG);
@@ -102,7 +105,7 @@ public class RollOutOrganizationsPage extends RollOutWeb {
         clickButton(BUTTON_CANCEL_ORG);
         checkElementEmpty(getOrgNameElement(nameOrg));
         Thread.sleep(1000);
-    }
+    }    */
 
     public void inputOrgName(String name) {
         driver.findElement((FIELD_NAME_ORG)).clear();

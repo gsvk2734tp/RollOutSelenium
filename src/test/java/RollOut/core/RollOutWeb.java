@@ -8,8 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static RollOut.core.RollOutConstants.*;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.
@@ -36,8 +33,8 @@ public abstract class RollOutWeb {
     public static List<Object> data() {
         Object[] data = new Object[]{
                 new ChromeDriver(),
-                new FirefoxDriver(),
-             //   new EdgeDriver()
+           //       new FirefoxDriver(),
+           //        new EdgeDriver()
         };
         return Arrays.asList(data);
     }
@@ -66,7 +63,9 @@ public abstract class RollOutWeb {
         return driver.findElement(element).getText();
     }
 
-    public void checkElementEnabled(By element) { Assert.assertTrue(driver.findElement(element).isEnabled());    }
+    public void checkElementEnabled(By element) {
+        Assert.assertTrue(driver.findElement(element).isEnabled());
+    }
 
     public void checkElementDisable(By element) {
         Assert.assertFalse(driver.findElement(element).isEnabled());
@@ -85,7 +84,7 @@ public abstract class RollOutWeb {
     }
 
     //TODO разобраться, что делает метод
-    public void selectDropdownOption(By element, String value){
+    public void selectDropdownOption(By element, String value) {
         Select dropdown = new Select(driver.findElement(element));
         dropdown.selectByValue(value);
     }

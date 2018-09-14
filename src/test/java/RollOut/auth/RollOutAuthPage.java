@@ -49,7 +49,9 @@ public class RollOutAuthPage extends RollOutWeb {
         inputPassword(PASSWORD);
         clickLogin();
         wait.until(titleIs(TITLE_APP));
-        waitElementToBeClickable(By.xpath("//td[text()='Ромашка']"));
+        waitElementToBeClickable(By.xpath("//td[text()='Core Network']"));
+        clickButton(By.xpath("//td[text()='Core Network']"));
+
     }
 
     public void logonSilso(String userName, String password) {
@@ -59,7 +61,7 @@ public class RollOutAuthPage extends RollOutWeb {
         inputPassword(password);
         clickLogin();
         wait.until(titleIs(TITLE_APP));
-        waitElementToBeClickable(By.xpath("//td[text()='Ромашка']"));
+        waitElementToBeClickable(By.xpath("//td[text()='Core Network']"));
     }
 
 

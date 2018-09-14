@@ -30,21 +30,21 @@ public class OrgElement extends RollOutOrganizationsPage {
     @Test
     public void checkElementsVisiable() throws InterruptedException {
         //Проверка текстовок и всех элементов на центральной странице
-        driver.findElement(By.xpath("//div[contains(text(),'Организации зарегистрированные в Rollout Center')]"));
+        driver.findElement(By.xpath("//h1[contains(text(),'Организации, зарегистрированные в ViPNet Rollout Center')]"));
         driver.findElement(By.xpath("//a[text()='Добавить организацию']"));
         driver.findElement(By.xpath("//th[text()='Название']"));
-        driver.findElement(By.xpath("//th[text()='URI префикс']"));
-        driver.findElement(By.xpath("//td[text()='Ромашка']"));
+        driver.findElement(By.xpath("//th[text()='Поддомен']"));
+        driver.findElement(By.xpath("//td[text()='Core Network']"));
 
         //Проверка невидимого элемента Редактировать у первой в списке Орг
-        clickButton(By.xpath("//td[text()='Ромашка']")); // Делает данную организацию активной, все проверки далее идут с ней
+        clickButton(By.xpath("//td[text()='Core Network']")); // Делает данную организацию активной, все проверки далее идут с ней
         checkElementEnabled(BUTTON_EDIT_ORG);
 
-        //Проверка элементов в карточке Организации
+        //TODO добавить недостающие поля и поля со 2 вкладки Проверка элементов в карточке Организации
         clickButton(BUTTON_EDIT_ORG);
-        driver.findElement(By.xpath("//div[contains(text(),'Данные организации в Rollout Center')]"));
+        driver.findElement(By.xpath("//div[contains(text(),'Данные организации в ViPNet Rollout Center')]"));
         driver.findElement(By.xpath("//div[contains(text(),'Название:')]"));
-        driver.findElement(By.xpath("//div[contains(text(),'URI префикс для авторизации пользователей:')]"));
+        driver.findElement(By.xpath("//div[contains(text(),'Поддомен:')]"));
         clickButton(BUTTON_CANCEL_ORG);
         Thread.sleep(1000);
 
@@ -58,6 +58,6 @@ public class OrgElement extends RollOutOrganizationsPage {
         Thread.sleep(1000);
 
         //Проверка лого
-        // checkElementLogoInfotecs(); логотип еще не сделали
+        checkElementLogoInfotecs();
     }
 }

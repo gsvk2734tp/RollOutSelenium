@@ -60,17 +60,15 @@ public abstract class RollOutUsers extends RollOutWeb {
 
     public void createUsers(int number) throws InterruptedException {
         for (int i = 0; i < number; i++) {
-            clickButton(BUTTON_ADD_USER);
+            clickAddUserButton();
             waitElementToBeClickable(TITLE_USER_FORM);
             Thread.sleep(1000);
-            createUser("User" + count, "gmail@gmail", "+7876543210");
+            createUser("User" + i, "gmail@gmail" + i, "+787654321" + i);
         }
     }
 
     public void createUser(String userName, String email, String mobile) throws InterruptedException {
-        clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(TITLE_USER_FORM);
-        Thread.sleep(1000);
+        clickAddUserButton();
         inputUserFields(userName, email, mobile);
         clickButton(BUTTON_SAVE_USER);
         waitElementToBeClickable(getTitleCreateUser(userName));
@@ -83,9 +81,7 @@ public abstract class RollOutUsers extends RollOutWeb {
 
     public void createUser(String userName, String email, String mobile, String about) throws InterruptedException {
         //Открытие карточки для создания пользователя
-        clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(TITLE_USER_FORM);
-        Thread.sleep(1000);
+        clickAddUserButton();
         inputUserFields(userName, email, mobile, about);
         clickButton(BUTTON_SAVE_USER);
         waitElementToBeClickable(getTitleCreateUser(userName));
@@ -98,9 +94,7 @@ public abstract class RollOutUsers extends RollOutWeb {
 
     public void createUserNegative(String userName, String email, String mobile) throws InterruptedException {
         //Открытие карточки для создания пользователя
-        clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(TITLE_USER_FORM);
-        Thread.sleep(1000);
+        clickAddUserButton();
         if (email == null) {
             inputUserName(userName);
             inputUserPhone(mobile);
@@ -116,9 +110,7 @@ public abstract class RollOutUsers extends RollOutWeb {
 
     public void createUserNegativeChechAboutField(String userName, String email, String mobile, String about) throws InterruptedException {
         //Открытие карточки для создания пользователя
-        clickButton(BUTTON_ADD_USER);
-        waitElementToBeClickable(TITLE_USER_FORM);
-        Thread.sleep(1000);
+        clickAddUserButton();
         inputUserFields(userName, email, mobile, about);
         Assert.assertEquals(getValueText(FIELD_USER_ABOUT), (about.substring(0, 128)));
         checkElementEnabled(BUTTON_SAVE_USER);
@@ -238,5 +230,15 @@ public abstract class RollOutUsers extends RollOutWeb {
 
     public By getUserNameElement(String userName) {
         return By.xpath("//td[text()='" + userName + "']");
+    }
+
+    public void clickAddUserButton() throws InterruptedException {
+        if (driver.findElements(By.cssSelector("div.dropdown.open")).isEmpty()) {
+            clickButton(BUTTON_ADD_USER);
+        }
+        waitElementToBeClickable(BUTTON_CREATE_USER);
+        clickButton(BUTTON_CREATE_USER);
+        waitElementToBeClickable(TITLE_USER_FORM);
+        Thread.sleep(1000);
     }
 }
