@@ -11,7 +11,7 @@ public class RollOutConstants {
     //URL
     public static final String URL_WINDOWS_SITE = "https://nsms-t-srv-02:8090"; // 10.0.15.237
     public static final String URL_WINDOWS_USERS = "https://nsms-t-srv-02:8090/users"; // 10.0.15.237
-    public static final String URL_WINDOWS_AUTH = "https://nsms-t-srv-02:8811"; // 10.0.15.237
+    public static final String URL_WINDOWS_AUTH = "https://nsms-t-srv-02:8811";
 
     //Общие константы
     public static final String SPEC_SYMBOLS = "!#$%&'*+-/=?^_`{|";
@@ -20,8 +20,10 @@ public class RollOutConstants {
     public static final By BUTTON_DELETE_PRESS_YES_USER_AND_ORG = By.cssSelector("button.actions_button:nth-child(1)");
     public static final By SELECT_LANGUAGE_AUTH = By.cssSelector(".language-dropdown-toggle-text");
     static final By LOGO = By.className("brand_logo");
+    static final By LOGO_AUTH = By.className("logo");
     static final By LOGO_VIPNET = By.xpath("//span[text()='ViPNet']");
-    static final By LOGO_NSMS = By.xpath("//span[text()='Rollout Center']");
+    static final By LOGO_NSMS = By.xpath("//span[text()='Network Security Management System']");
+    static final By LOGO_ROC = By.xpath("//span[text()='Rollout Center']");
 
     //Страницы авторизации
     public static final String TITLE_SILSO = "ViPNet Network Security Management System";
@@ -48,7 +50,6 @@ public class RollOutConstants {
     public static final By BUTTON_CREATE_USER = By.xpath("//div[text()='Ввести данные']");
     public static final By BUTTON_SAVE_USER = By.cssSelector("button:nth-child(1)");
     public static final By BUTTON_DELETE_USER = By.cssSelector(".icon.icon-web-general.icons-general-delete");
-    public static final By BUTTON_DELETE_ALL_USERS = By.cssSelector("a.toolbar_button:nth-child(1)");
     public static final By BUTTON_GROUP_OPER_DELETE_USERS = By.xpath("//a[text()='Удалить пользователей']");
     public static final By CHECKBOX_SELECT_ALL_USERS = By.cssSelector("th.user-list_first-column.table_header");
     public static final By FIELD_ERROR_USER = By.cssSelector(".form_field-error");

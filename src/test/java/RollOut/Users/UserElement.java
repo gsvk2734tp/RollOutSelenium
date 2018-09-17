@@ -25,23 +25,23 @@ public class UserElement extends RollOutUsers {
     public void editUser() throws InterruptedException {
         Thread.sleep(3000); //Пропуск анимации
         //Проверка центральной страницы
-        driver.findElement(By.xpath("//div[contains(text(),'Пользователи Ромашка зарегистрированные в Rollout Center')]"));
-        driver.findElement(By.xpath("//a[text()='Добавить пользователя']"));
-        driver.findElement(By.xpath("//th[contains(text(),'Имя пользователя')]"));
-        driver.findElement(By.xpath("//th[contains(text(),'Электронная почта')]"));
-        driver.findElement(By.xpath("//th[contains(text(),'Телефон')]"));
+        driver.findElement(By.xpath("//h1[contains(text(),'Пользователи Core Network, зарегистрированные в ViPNet Rollout Center')]"));
+        driver.findElement(By.xpath("//span[text()='Добавить пользователя']"));
+        driver.findElement(By.xpath("//span[contains(text(),'Имя пользователя')]"));
+        driver.findElement(By.xpath("//th[contains(text(),'Адрес электронной почты')]"));
+        driver.findElement(By.xpath("//th[contains(text(),'Номер телефона')]"));
         driver.findElement(By.xpath("//th[contains(text(),'Статус')]"));
-        driver.findElement(By.xpath("//p[text()='Выберите пользователя для управления свойствами']"));
+        driver.findElement(By.xpath("//p[text()='Выберите пользователя']"));
         driver.findElement(By.cssSelector("img.properties-image"));
 
         //Проверка элементов на странице добавления пользователя
-        clickButton(BUTTON_ADD_USER);
-        driver.findElement(By.xpath("//span[text()='Новый пользователь']"));
+        clickAddUserButton();
+        driver.findElement(By.xpath("//h1[text()='Новый пользователь']"));
         driver.findElement(By.xpath("//span[text()='Имя пользователя:']"));
-        driver.findElement(By.xpath("//span[text()='Электронная почта:']"));
-        driver.findElement(By.xpath("//span[text()='Телефон:']"));
+        driver.findElement(By.xpath("//span[text()='Адрес электронной почты:']"));
+        driver.findElement(By.xpath("//span[text()='Номер телефона:']"));
         driver.findElement(By.xpath("//span[text()='Описание:']"));
 
-        // checkElementLogoInfotecs(); логотип еще не сделали
+        checkElementLogoInfotecs("RollOut");
     }
 }

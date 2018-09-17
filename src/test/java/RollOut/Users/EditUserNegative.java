@@ -62,12 +62,6 @@ public class EditUserNegative extends RollOutUsers {
         editUserNegative(null, null, "+ERDFS123", null); //буквы и + вначале
         editUserNegative(null, null, "+7(123)456-78-90", null); //буквы и + вначале
         editUserNegative(null, null, "   +712132123456789 ", null); //20 симв с пробелами
-
-
-        /** Проверка Описания негативные */
-        editUserNegative("User" + count, "gmail@gmail.com", "+71234", RandomStr.getStr(129)); // 129 симв
-        editUserNegative("User" + count, "gmail@gmail.com", "", RandomStr.getStr(129)); // 129 симв
-        editUserNegative("User" + count, "", "+71234", RandomStr.getStr(129)); // 129 симв
     }
 
     @After

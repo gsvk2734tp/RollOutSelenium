@@ -58,6 +58,6 @@ public class OrgElement extends RollOutOrganizationsPage {
         Thread.sleep(1000);
 
         //Проверка лого
-        checkElementLogoInfotecs();
+        checkElementLogoInfotecs("RollOut");
     }
 }

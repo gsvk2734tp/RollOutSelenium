@@ -89,11 +89,16 @@ public abstract class RollOutWeb {
         dropdown.selectByValue(value);
     }
 
-
-    public void checkElementLogoInfotecs() {
-        driver.findElement(LOGO);
+    public void checkElementLogoInfotecs(String page) {
+        if (page.equals("auth")) {
+            driver.findElement(LOGO_AUTH);
+            driver.findElement(LOGO_NSMS);
+        }
+        else {
+            driver.findElement(LOGO);
+            driver.findElement(LOGO_ROC);
+        }
         driver.findElement(LOGO_VIPNET);
-        driver.findElement(LOGO_NSMS);
     }
 }
 
