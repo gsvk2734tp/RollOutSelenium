@@ -8,7 +8,7 @@ public class RandomStr {
     private static String AlfEng = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static String AlfRus = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
     private static String AlfRusEng = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-    private static char[] sumb = AlfEng.toCharArray();
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -16,12 +16,14 @@ public class RandomStr {
     }
 
     public static void printStr(int leng) throws IOException {
+        char[] sumb = AlfEng.toCharArray();
         for (int i = 0; i < leng; i++) {
             System.out.print(sumb[(int) (Math.random() * AlfEng.length())]);
         }
     }
 
     public static String getStr(int leng) {
+        char[] sumb = AlfEng.toCharArray();
         String line = "";
         for (int i = 0; i < leng; i++) {
             line += (sumb[(int) (Math.random() * AlfEng.length())]);
@@ -29,6 +31,7 @@ public class RandomStr {
         return line;
     }
     public static String getRusStr(int leng) {
+        char[] sumb = AlfRus.toCharArray();
         String line = "";
         for (int i = 0; i < leng; i++) {
             line += (sumb[(int) (Math.random() * AlfRus.length())]);
@@ -37,6 +40,7 @@ public class RandomStr {
     }
 
     public static String getStrDomain(int leng) {
+        char[] sumb = AlfEng.toCharArray();
         String line = "";
         for (int i = 0; i < leng; i++) {
             if (i == 63 || i == 127 || i == 191) {

@@ -43,7 +43,7 @@ public class SmtpSender {
         System.out.println("SimpleEmail Start");
 
         String smtpHostServer = "127.0.0.1";
-        String emailID = "pankaj@journaldev.com";
+        String emailID = "pankaj@journaldev1.com";
 
         Properties props = System.getProperties();
 

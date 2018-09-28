@@ -11,7 +11,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 27.03.2018.
- * Автотест, проверяющий наличие элементов на вкладке с авторизацией
+ * Автотест, проверяющий наличие элементов на вкладке с авторизацией2
  * TfsTestCase xxx-xxx
  */
 
@@ -23,12 +23,13 @@ public class AuthElement extends RollOutAuthPage {
 
     @Test
     public void CheckElements() throws InterruptedException {
-        driver.get(URL_WINDOWS_AUTH);
+        driver.get(URL_WINDOWS_SITE);
         wait.until(titleIs(TITLE_SILSO));
 
         //Rus
+        Thread.sleep(2000);
         changeLanguage("ru");
-        checkElementLogoInfotecs();
+        checkElementLogoInfotecs("auth");
         driver.findElement(By.xpath("//span[text()='© 2018, ОАО «ИнфоТеКС»']"));
         driver.findElement(SELECT_LANGUAGE_AUTH);
         driver.findElement(By.xpath("//label[text()='Имя учетной записи:']"));
@@ -39,7 +40,7 @@ public class AuthElement extends RollOutAuthPage {
         Thread.sleep(2000);
         wait.until(titleIs(TITLE_SILSO));
         changeLanguage("en");
-        checkElementLogoInfotecs();
+        checkElementLogoInfotecs("auth");
         driver.findElement(By.xpath("//span[text()='© 2018, Infotecs']"));
         driver.findElement((SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='User name:']"));
@@ -47,11 +48,11 @@ public class AuthElement extends RollOutAuthPage {
         driver.findElement(By.xpath("//button[text()='Log on']"));
 
         //Deutsch
-        driver.get(URL_WINDOWS_AUTH + "");
+        driver.get(URL_WINDOWS_SITE + "");
         Thread.sleep(2000);
         wait.until(titleIs(TITLE_SILSO));
         changeLanguage("de");
-        checkElementLogoInfotecs();
+        checkElementLogoInfotecs("auth");
         driver.findElement(By.xpath("//span[text()='© 2018, Infotecs']"));
         driver.findElement((SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='Benutzername:']"));
@@ -59,11 +60,11 @@ public class AuthElement extends RollOutAuthPage {
         driver.findElement(By.xpath("//button[text()='Anmelden']"));
 
         //Portugues
-        driver.get(URL_WINDOWS_AUTH + "");
+        driver.get(URL_WINDOWS_SITE + "");
         Thread.sleep(2000);
         wait.until(titleIs(TITLE_SILSO));
         changeLanguage("pt");
-        checkElementLogoInfotecs();
+        checkElementLogoInfotecs("auth");
         driver.findElement(By.xpath("//span[text()='© 2018, Infotecs']"));
         driver.findElement((SELECT_LANGUAGE_AUTH));
         driver.findElement(By.xpath("//label[text()='Nome de usuário:']"));

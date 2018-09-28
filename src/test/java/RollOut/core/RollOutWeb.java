@@ -8,8 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,7 +16,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static RollOut.core.RollOutConstants.*;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 28.03.2018.
@@ -28,20 +25,16 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 public abstract class RollOutWeb {
     public WebDriver driver;
     public WebDriverWait wait;
-    public static OperaOptions options = new OperaOptions();
     public int count = 0;
     public char[] specSumb = {'!', '#', '$', '%', '&', '\'', '*', '+', '-', '/', '=', '?', '^', '_', '`', '{', '|', '}', '~'};
     public char[] specSumbUserName = {'\\', '/', ':', '*', '?', '"', '<', '>', '|'};
-    public static String operaPath = "C:\\Program Files\\Opera\\52.0.2871.40\\opera.exe";
 
     @Parameterized.Parameters
     public static List<Object> data() {
-        options.setBinary(operaPath);
         Object[] data = new Object[]{
                 new ChromeDriver(),
-                new FirefoxDriver(),
-                new OperaDriver(options),
-                new EdgeDriver()
+           //       new FirefoxDriver(),
+           //        new EdgeDriver()
         };
         return Arrays.asList(data);
     }
@@ -70,7 +63,9 @@ public abstract class RollOutWeb {
         return driver.findElement(element).getText();
     }
 
-    public void checkElementEnabled(By element) { Assert.assertTrue(driver.findElement(element).isEnabled());    }
+    public void checkElementEnabled(By element) {
+        Assert.assertTrue(driver.findElement(element).isEnabled());
+    }
 
     public void checkElementDisable(By element) {
         Assert.assertFalse(driver.findElement(element).isEnabled());
@@ -89,16 +84,21 @@ public abstract class RollOutWeb {
     }
 
     //TODO разобраться, что делает метод
-    public void selectDropdownOption(By element, String value){
+    public void selectDropdownOption(By element, String value) {
         Select dropdown = new Select(driver.findElement(element));
         dropdown.selectByValue(value);
     }
 
-
-    public void checkElementLogoInfotecs() {
-        driver.findElement(LOGO);
+    public void checkElementLogoInfotecs(String page) {
+        if (page.equals("auth")) {
+            driver.findElement(LOGO_AUTH);
+            driver.findElement(LOGO_NSMS);
+        }
+        else {
+            driver.findElement(LOGO);
+            driver.findElement(LOGO_ROC);
+        }
         driver.findElement(LOGO_VIPNET);
-        driver.findElement(LOGO_NSMS);
     }
 }
 

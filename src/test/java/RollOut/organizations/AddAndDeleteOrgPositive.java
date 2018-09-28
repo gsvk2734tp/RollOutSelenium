@@ -7,6 +7,8 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import static RollOut.core.RollOutConstants.orgName;
+
 /**
  * @author Golyshkin.Dmitriy on 17.04.2018.
  * Автотест, проверяющий позитивные сценарии добавления Организации
@@ -15,7 +17,7 @@ import org.openqa.selenium.interactions.Actions;
 
 @RunWith(value = Parameterized.class)
 public class AddAndDeleteOrgPositive extends RollOutOrganizationsPage {
-    private String orgName = "Быки и коровы";
+
 
     public AddAndDeleteOrgPositive(WebDriver driver) {
         super(driver);

@@ -2,6 +2,8 @@ package RollOut.Users;
 
 import RollOut.auth.RollOutAuthPage;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,34 +22,28 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * TfsTestCase xxx-xxx
  */
 
-public class CreateMoreUsers {
-    WebDriver driver;
-    WebDriverWait wait;
-    int count = 0;
+// @RunWith(value = Parameterized.class)
+public class CreateMoreUsers extends RollOutUsers {
 
- //TODO переделать   @Test
-    public void create500Users() throws InterruptedException {
-        driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 20);
-        driver.manage().window().maximize();
-        driver.get(URL_NSMS_SITE);
-        wait.until(titleIs(TITLE_SILSO));
-        RollOutAuthPage authPage = new RollOutAuthPage(driver);
-        authPage.logonSilso("alice", "P@ssw0rd");
-        driver.get(URL_NSMS_USERS);
-        Thread.sleep(5000);
-        for (int i = 0; i < 20; i++) {
-            driver.findElement((BUTTON_ADD_USER)).click();
-            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("span.header_title")));
-            Thread.sleep(2000);
-            List<WebElement> elements = driver.findElements(By.cssSelector("div.host_input input"));
-            elements.get(0).sendKeys("User" + count);
-            elements.get(1).sendKeys("q@q");
-            elements.get(2).sendKeys("+79251234444");
-            driver.findElement(By.cssSelector("textarea")).sendKeys("123qwe");
-            driver.findElement((BUTTON_SAVE_USER)).click();
-            count++;
+    public CreateMoreUsers(WebDriver driver) {
+        super(driver);
+    }
+
+    //   @Test
+    public void create100Users() throws InterruptedException {
+        Thread.sleep(3000);
+        for (int i = 0; i < 100; i++) {
+            if (driver.findElements(By.cssSelector("div.dropdown.open")).isEmpty()) {
+                clickButton(BUTTON_ADD_USER);
+            }
+            waitElementToBeClickable(BUTTON_CREATE_USER);
+            clickButton(BUTTON_CREATE_USER);
+            waitElementToBeClickable(TITLE_USER_FORM);
             Thread.sleep(1000);
+            inputUserFields("User" + count, "gmail@gmail.com" + count, "+792687622" + count);
+            clickButton(BUTTON_SAVE_USER);
+            count++;
+            Thread.sleep(400);
         }
     }
 }
