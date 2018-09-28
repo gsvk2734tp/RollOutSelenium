@@ -11,7 +11,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * @author Golyshkin.Dmitriy on 27.03.2018.
- * Автотест, проверяющий наличие элементов на вкладке с авторизацией
+ * Автотест, проверяющий наличие элементов на вкладке с авторизацией2
  * TfsTestCase xxx-xxx
  */
 
