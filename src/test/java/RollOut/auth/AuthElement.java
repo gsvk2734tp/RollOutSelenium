@@ -16,7 +16,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  */
 
 @RunWith(value = Parameterized.class)
-public class AuthElement extends RollOutAuthPage {
+public class AuthElement extends RollOut.auth.RollOutAuthPage {
     public AuthElement(WebDriver driver) {
         super(driver);
     }
