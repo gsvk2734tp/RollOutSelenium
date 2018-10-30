@@ -20,7 +20,7 @@ public class GroupOperations extends RollOutUsers {
 
     @Test
     public void checkGroupOperations() throws InterruptedException {
-        //Массовое удаление
+        //Массовое удаление1
         createUsers(10);
         deleteAllUsers();
     }
