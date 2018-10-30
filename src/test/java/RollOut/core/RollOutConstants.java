@@ -9,9 +9,9 @@ import org.openqa.selenium.By;
 
 public class RollOutConstants {
     //URL
-    public static final String URL_WINDOWS_SITE = "https://nsms-t-srv-02:8090"; // 10.0.15.237
-    public static final String URL_WINDOWS_USERS = "https://nsms-t-srv-02:8090/users"; // 10.0.15.237
-    public static final String URL_WINDOWS_AUTH = "https://nsms-t-srv-02:8811";
+    public static final String URL_WINDOWS_SITE = "https://srv-02.mngmob:8090"; // 10.0.15.237
+    public static final String URL_WINDOWS_USERS = "https://srv-02.mngmob:8090/users"; // 10.0.15.237
+    public static final String URL_WINDOWS_AUTH = "https://srv-02.mngmob:8811";
 
     //Общие константы
     public static final String SPEC_SYMBOLS = "!#$%&'*+-/=?^_`{|";
