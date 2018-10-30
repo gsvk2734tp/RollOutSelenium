@@ -1,4 +1,4 @@
-
+package RollOut.utils;
 
 import java.util.Date;
 import java.util.Properties;
