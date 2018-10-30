@@ -31,7 +31,7 @@ public class EditUserNegative extends RollOutUsers {
 
         /* Проверка на спецсимволы в имени, запрещены, пока что баг 42860
         for (char sumb : specSumbUserName) {
-            editUserNegative("User" + sumb, null, null, null);
+            editUserNegative("User" + sumb, null, null, null);1
         } */
 
         editUserNegative(RandomStr.getStr(129), null, null, null); // имя 129
