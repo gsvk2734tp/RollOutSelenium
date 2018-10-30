@@ -7,7 +7,9 @@ apply plugin: 'application'
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    maven {
+        url "http://artifactory.infotecs.ru:8081/artifactory/repo1"
+    }    
 }
 
 dependencies {
